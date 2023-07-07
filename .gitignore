@@ -1,0 +1,10 @@
+# Ignore Everything
+*
+# Except these files
+!.gitignore
+!.vimrc
+!.vimrc-parts/
+!.zshrc
+!~/guiding_principle.md
+!.config/
+!.vimrc
