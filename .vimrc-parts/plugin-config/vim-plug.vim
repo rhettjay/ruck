@@ -9,4 +9,5 @@ Plug 'neoclide/coc.nvim', {'branch':'release'}
 Plug 'vim-syntastic/syntastic'
 Plug 'rstacruz/vim-closer'
 Plug 'mg979/vim-visual-multi', {'branch':'master'}
+Plug 'junegunn/vim-easy-align'
 call plug#end()
