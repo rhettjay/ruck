@@ -7,4 +7,6 @@ endif
 call plug#begin('~/.vim/autoload/')
 Plug 'neoclide/coc.nvim', {'branch':'release'}
 Plug 'vim-syntastic/syntastic'
+Plug 'rstacruz/vim-closer'
+Plug 'mg979/vim-visual-multi', {'branch':'master'}
 call plug#end()
