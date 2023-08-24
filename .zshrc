@@ -42,7 +42,7 @@ precmd() {
 
 setopt prompt_subst
 
-PROMPT='%u%~${vcs_info_msg_0_}$SQUID '
+PROMPT='%u%~${vcs_info_msg_0_} $SQUID '
 #RPROMPT="(%D{%d/%m|%H:%M:})"
 zstyle ':vcs_info:git*' formats "%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
 
