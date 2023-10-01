@@ -29,6 +29,26 @@ setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 
+function random_element {
+  declare -a array=("$@")
+  r=$((RANDOM % ${#array[@]}))
+  printf "%s\n" "${array[$r]}"
+}
+
+# Default Prompt
+setEmoji () {
+  EMOJI="$*"
+  DISPLAY_DIR='$(dirs)'
+  DISPLAY_BRANCH='$(git_branch)'
+  PROMPT='%u%~${vcs_info_msg_0_} ${EMOJI} '
+}
+
+newRandomEmoji () {
+  setEmoji "$(random_element 😅 👽 🔥 🚀 👻 ⛄ 👾 🍔 😄 🍰 🐑 😎 🏎 🤖 😇 😼 💪 🦄 🥓 🌮 🎉 💯 ⚛️ 🐠 🐳 🐿 🥳 🤩 🤯 🤠 👨‍💻 🦸‍ 🧝‍ 🧞‍ 🧙‍ 👨‍🚀 👨‍🔬 🕺 🦁 🐶 🐵 🐻 🦊 🐙 🦎 🦖 🦕 🦍 🦈 🐊 🦂 🐍 🐢 🐘 🐉 🦚 ✨ ☄️ ⚡️ 💥 💫 🧬 🔮 ⚗️ 🎊 🔭 ⚪️ 🔱)"
+}
+
+newRandomEmoji
+
 # Custom bin
 PATH="$PATH:$HOME/.bin"
 
@@ -42,7 +62,7 @@ precmd() {
 
 setopt prompt_subst
 
-PROMPT='%u%~${vcs_info_msg_0_} $SQUID '
+
 #RPROMPT="(%D{%d/%m|%H:%M:})"
 zstyle ':vcs_info:git*' formats "%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
 
