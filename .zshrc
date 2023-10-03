@@ -14,20 +14,16 @@ B='\033[0;34m'   #'0;34' is Blue's ANSI color code
 #           \___/       
 #
 #                       "
+#
+#
+alias ..="cd ../"
+alias ..l="cd ../ && ll"
+alias vz="vi ~/.zshrc"
+alias sz=". ~/.zshrc"
 
 OCTO=🐙
 SQUID=🦑
 ROCKET=🚀
-  
-HISTSIZE=5000
-HISTFILESIZE=10000
-SAVEHIST=5000
-setopt EXTENDED_HISTORY
-HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
-setopt SHARE_HISTORY
-setopt APPEND_HISTORY
-setopt INC_APPEND_HISTORY
-setopt HIST_IGNORE_DUPS
 
 function random_element {
   declare -a array=("$@")
@@ -44,10 +40,20 @@ setEmoji () {
 }
 
 newRandomEmoji () {
-  setEmoji "$(random_element 😅 👽 🔥 🚀 👻 ⛄ 👾 🍔 😄 🍰 🐑 😎 🏎 🤖 😇 😼 💪 🦄 🥓 🌮 🎉 💯 ⚛️ 🐠 🐳 🐿 🥳 🤩 🤯 🤠 👨‍💻 🦸‍ 🧝‍ 🧞‍ 🧙‍ 👨‍🚀 👨‍🔬 🕺 🦁 🐶 🐵 🐻 🦊 🐙 🦎 🦖 🦕 🦍 🦈 🐊 🦂 🐍 🐢 🐘 🐉 🦚 ✨ ☄️ ⚡️ 💥 💫 🧬 🔮 ⚗️ 🎊 🔭 ⚪️ 🔱)"
+  setEmoji "$(random_element 👽 🔥 🚀 👻 ⛄ 👾 🐑 🏎 🤖 🦄 🌮 🐳 🐿 🐵 🐻 🦊 🐙 🦎 🦖 🦕 🦍 🦈 🐊 🦂 🐢 🐘 🐉 ⚡️ 🔱 🦑)"
 }
 
 newRandomEmoji
+  
+HISTSIZE=5000
+HISTFILESIZE=10000
+SAVEHIST=5000
+setopt EXTENDED_HISTORY
+HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
 
 # Custom bin
 PATH="$PATH:$HOME/.bin"
@@ -61,7 +67,6 @@ precmd() {
 }
 
 setopt prompt_subst
-
 
 #RPROMPT="(%D{%d/%m|%H:%M:})"
 zstyle ':vcs_info:git*' formats "%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
@@ -78,5 +83,4 @@ alias ga="git add .";
 dif() { git diff --color --no-index "$1" "$2" | diff-so-fancy; }
 cdiff() { code --diff "$1" "$2"; }
 
-#alias git=hub
-
+source $( brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
