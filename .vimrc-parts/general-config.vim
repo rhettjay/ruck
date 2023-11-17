@@ -8,6 +8,8 @@
 "           (o___o)
 "            \___/
 "            
+
+let mapleader = ","
 syntax on
 colo murphy
 set hlsearch
