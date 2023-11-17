@@ -14,10 +14,36 @@ B='\033[0;34m'   #'0;34' is Blue's ANSI color code
 #           \___/       
 #
 #                       "
+#
+#
+alias ..="cd ../"
+alias ..l="cd ../ && ll"
+alias vz="vi ~/.zshrc"
+alias sz=". ~/.zshrc"
 
 OCTO=🐙
 SQUID=🦑
 ROCKET=🚀
+
+function random_element {
+  declare -a array=("$@")
+  r=$(($RANDOM % ${#array[@]}))
+  printf "%s\n" "${array[$r]}"
+}
+
+# Default Prompt
+setEmoji () {
+  EMOJI="$*"
+  DISPLAY_DIR='$(dirs)'
+  DISPLAY_BRANCH='$(git_branch)'
+  PROMPT='%u%~${vcs_info_msg_0_} ${EMOJI} '
+}
+
+newRandomEmoji () {
+  setEmoji "$(random_element 👽 🔥 🚀 👻 ⛄ 👾 🐑 🏎 🤖 🦄 🌮 🐳 🐿 🐵 🐻 🦊 🐙 🦎 🦖 🦕 🦍 🦈 🐊 🦂 🐢 🐘 🐉 ⚡️ 🔱 🦑)"
+}
+
+newRandomEmoji
   
 HISTSIZE=5000
 HISTFILESIZE=10000
@@ -42,7 +68,6 @@ precmd() {
 
 setopt prompt_subst
 
-PROMPT='%u%~${vcs_info_msg_0_}$SQUID '
 #RPROMPT="(%D{%d/%m|%H:%M:})"
 zstyle ':vcs_info:git*' formats "%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
 
@@ -55,8 +80,16 @@ alias gf="git fetch";
 alias gpush="git push";
 alias gd="git diff";
 alias ga="git add .";
+alias glone="gh repo clone";
 dif() { git diff --color --no-index "$1" "$2" | diff-so-fancy; }
 cdiff() { code --diff "$1" "$2"; }
 
-#alias git=hub
+function clone { if [[ $PWD == ~/work ]];
+            then
+              gh repo clone byu-oit/$1;
+            else
+              gh repo clone $1;
+            fi;
+        }
 
+source $( brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
