@@ -24,6 +24,29 @@ alias sz=". ~/.zshrc"
 OCTO=🐙
 SQUID=🦑
 ROCKET=🚀
+<<<<<<< HEAD
+
+function random_element {
+  declare -a array=("$@")
+  r=$(($RANDOM % ${#array[@]}))
+  printf "%s\n" "${array[$r]}"
+}
+
+# Default Prompt
+setEmoji () {
+  EMOJI="$*"
+  DISPLAY_DIR='$(dirs)'
+  DISPLAY_BRANCH='$(git_branch)'
+  PROMPT='%u%~${vcs_info_msg_0_} ${EMOJI} '
+}
+
+newRandomEmoji () {
+  setEmoji "$(random_element 👽 🔥 🚀 👻 ⛄ 👾 🐑 🏎 🤖 🦄 🌮 🐳 🐿 🐵 🐻 🦊 🐙 🦎 🦖 🦕 🦍 🦈 🐊 🦂 🐢 🐘 🐉 ⚡️ 🔱 🦑)"
+}
+
+newRandomEmoji
+||||||| 16b6ceb
+=======
 
 function random_element {
   declare -a array=("$@")
@@ -44,6 +67,7 @@ newRandomEmoji () {
 }
 
 newRandomEmoji
+>>>>>>> main
   
 HISTSIZE=5000
 HISTFILESIZE=10000
@@ -80,7 +104,23 @@ alias gf="git fetch";
 alias gpush="git push";
 alias gd="git diff";
 alias ga="git add .";
+alias glone="gh repo clone";
 dif() { git diff --color --no-index "$1" "$2" | diff-so-fancy; }
 cdiff() { code --diff "$1" "$2"; }
 
+<<<<<<< HEAD
+function clone { if [[ $PWD == ~/work ]];
+            then
+              gh repo clone byu-oit/$1;
+            else
+              gh repo clone $1;
+            fi;
+        }
+
 source $( brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+||||||| 16b6ceb
+#alias git=hub
+
+=======
+source $( brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+>>>>>>> main
