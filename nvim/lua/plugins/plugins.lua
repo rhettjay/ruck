@@ -3,8 +3,6 @@ return {
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
-  -- netrw plugin fixes
-  'tpope/vim-vinegar',
   -- press ga to reveal a characters decimal, octal, hex, Emoji_code, html
   'tpope/vim-characterize',
   -- Detect tabstop and shiftwidth automatically
@@ -29,19 +27,24 @@ return {
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
+    version = false,
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
-
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
-
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
     },
   },
-
+  {
+    'folke/tokyonight.nvim',
+    lazy = false,
+    config = function()
+      vim.cmd.colorscheme = "tokyonight"
+    end,
+  },
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
   {
@@ -83,14 +86,14 @@ return {
     },
   },
 
-  {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
-  },
+--  {
+--    -- Theme inspired by Atom
+--    'navarasu/onedark.nvim',
+--    priority = 1000,
+--    config = function()
+--      vim.cmd.colorscheme 'onedark'
+--    end,
+--  },
 
   {
     -- Set lualine as statusline
@@ -98,8 +101,8 @@ return {
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
-        theme = 'onedark',
+        icons_enabled = true,
+        theme = 'tokyonight',
         component_separators = '|',
         section_separators = '',
       },
