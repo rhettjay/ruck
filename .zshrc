@@ -81,6 +81,11 @@ alias gpush="git push";
 alias gd="git diff";
 alias ga="git add .";
 alias glone="gh repo clone";
+alias initn="npm init";
+alias initt="terraform init";
+alias inittu="terraform init -upgrade";
+alias plan-t="terraform plan";
+alias tapply="terraform plan -apply";
 dif() { git diff --color --no-index "$1" "$2" | diff-so-fancy; }
 cdiff() { code --diff "$1" "$2"; }
 
