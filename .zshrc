@@ -1,29 +1,7 @@
-R='\033[0;31m'   #'0;31' is Red's ANSI color code
-G='\033[1;32m'   #'1;32' is Yellow's ANSI color code
-B='\033[0;34m'   #'0;34' is Blue's ANSI color code
-
-#echo "${R}
-#      ,  ${G}{BULKLEY}${R}  ,    
-#     //             \\\\\  
-#    ((__,-\"\"\"\"\"\"\"-,__)) 
-#    '----)~     ~(----\` 
-#     .-'(  .    . )\`-,  
-#     \`~~\`\       /\`~~\`  
-#          |     |      
-#          \o___o)      
-#           \___/       
-#
-#                       "
-#
-#
 alias ..="cd ../"
 alias ..l="cd ../ && ll"
 alias vz="vi ~/.zshrc"
 alias sz=". ~/.zshrc"
-
-OCTO=🐙
-SQUID=🦑
-ROCKET=🚀
 
 function random_element {
   declare -a array=("$@")
@@ -68,9 +46,7 @@ precmd() {
 
 setopt prompt_subst
 
-#RPROMPT="(%D{%d/%m|%H:%M:})"
 zstyle ':vcs_info:git*' formats "%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
-
 
 ## git aliases
 function gc { git commit -m "$@"; }
@@ -90,11 +66,11 @@ dif() { git diff --color --no-index "$1" "$2" | diff-so-fancy; }
 cdiff() { code --diff "$1" "$2"; }
 
 function clone { if [[ $PWD == ~/work ]];
-            then
-              gh repo clone byu-oit/$1;
-            else
-              gh repo clone $1;
-            fi;
-        }
+  then
+    gh repo clone "$WORK"/$1;
+  else
+    gh repo clone $1;
+  fi;
+}
 
 source $( brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
