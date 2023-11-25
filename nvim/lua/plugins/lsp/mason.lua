@@ -24,6 +24,7 @@ return {
 				"html",
 				"lua_ls",
 				"pyright",
+				"rust-analyzer",
 				"terraformls",
 				"tsserver",
 			},
