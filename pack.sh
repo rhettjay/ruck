@@ -1,5 +1,5 @@
-configs=(nvim gh bat)
-wdg=(.zshrc .zprofile)
+configs=(nvim)
+wdg=(.zshrc)
 for i in ${!configs[@]}; do
 	config=${configs[$i]}
 	echo "throwing ${config} into your rucksack..."

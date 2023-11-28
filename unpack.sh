@@ -1,1 +1,1 @@
-cp ./* ~/.config/*
+cp -f -r ./* ~/.config/*
