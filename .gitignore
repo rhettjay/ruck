@@ -1,4 +1,4 @@
 #Ignore ENV
 *.env
 .env/
-
+*.DS_Store

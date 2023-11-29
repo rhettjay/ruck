@@ -1,4 +1,4 @@
-configs=(nvim gh bat)
+configs=(nvim gh bat iterm tmux)
 wdg=(.zshrc .zprofile)
 for i in ${!configs[@]}; do
 	config=${configs[$i]}
