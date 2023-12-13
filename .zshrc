@@ -31,6 +31,8 @@ setopt prompt_subst
 
 PROMPT='%u%~${vcs_info_msg_0_} $SQUID '
 zstyle ':vcs_info:git*' formats "%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
+
+# when using tab auto completion ignore .lock files
 zstyle ':completion:*:*:-command-:*:*' ignored-patterns '*.lock'
 
 
