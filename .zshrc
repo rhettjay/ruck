@@ -17,7 +17,7 @@ setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 
 # Custom bin
-PATH="$PATH:$HOME/.bin:$HOME/.cargo/bin:$HOME/bin"
+PATH="$PATH:$HOME/.bin:$HOME/.cargo/bin:$HOME/bin:$HOME/sandbox/web-assembly-crt/wabt/build"
 
 autoload -U colors && colors
 autoload -Uz vcs_info
@@ -30,10 +30,29 @@ precmd() {
 setopt prompt_subst
 
 PROMPT='%u%~${vcs_info_msg_0_} $SQUID '
+## Add git info to zle
 zstyle ':vcs_info:git*' formats "%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
+## Ignore .lock files when using tab
+zstyle ':completion:*:*:vim:*:files' ignored-patterns '*.lock'
+## Add groups with autotab
+zstyle ':completion:*' group-name ''
+## pretty ls colors from tab
+zstyle ':completion:*' list-colors ${(s.:.)ZLS_COLORS}
+## ls -l from tab
+zstyle ':completion:*' files-list all
+## fuzzy find next best with tab
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+## cp file sort reverse
+zstyle ':completion:*:*:cp:*' file-sort modification reverse
+## menu
+zstyle ':completion:*' menu select
+## bindkeys for menu navigation
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
 
-# when using tab auto completion ignore .lock files
-zstyle ':completion:*:*:-command-:*:*' ignored-patterns '*.lock'
+## zstyle ':completion:*:*:*:*:*' verbose yes
 
 
 ## git aliases
@@ -140,3 +159,7 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 #setopt prompt_subst
 #
 #zstyle ':vcs_info:git*' formats "%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
+
+export WASMTIME_HOME="$HOME/.wasmtime"
+
+export PATH="$WASMTIME_HOME/bin:$PATH"
