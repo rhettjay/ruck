@@ -28,6 +28,12 @@ return {
 				"terraformls",
 				"tsserver",
 			},
+			formatting = {
+				disabled = {
+					"rust-analyzer",
+					"typescript-langauge-server",
+				},
+			},
 			automatic_installation = true,
 		})
 	end,

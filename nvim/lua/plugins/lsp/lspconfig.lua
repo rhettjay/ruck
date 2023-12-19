@@ -50,7 +50,7 @@ return {
 			keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
 			opts.desc = "Restart LSP"
-			keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+			keymapsset("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 		end
 
 		-- used to enable autocompletion (assign to every lsp server config)
@@ -65,48 +65,45 @@ return {
 		end
 
 		-- configure html server
-		lspconfig["html"].setup({
+		lspconfig.html.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure typescript server with plugin
-		lspconfig["tsserver"].setup({
-			capabilities = capabilities,
+		lspconfig.tsserver.setup({
+			on_attach = on_attach,
+		})
+
+		-- configure eslint server with plugin
+		lspconfig.eslint.setup({
 			on_attach = on_attach,
 		})
 
 		-- configure css server
-		lspconfig["cssls"].setup({
-			capabilities = capabilities,
+		lspconfig.cssls.setup({
 			on_attach = on_attach,
 		})
 
 		-- configure svelte server
-		lspconfig["svelte"].setup({
-			capabilities = capabilities,
-			on_attach = function(client, bufnr)
-				on_attach(client, bufnr)
-
-				vim.api.nvim_create_autocmd("BufWritePost", {
-					pattern = { "*.js", "*.ts" },
-					callback = function(ctx)
-						if client.name == "svelte" then
-							client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
-						end
-					end,
-				})
-			end,
+		lspconfig.svelte.setup({
+			on_attach = on_attach,
 		})
 
 		-- configure python server
-		lspconfig["pyright"].setup({
+		lspconfig.pyright.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
+		---- configure python server
+		--lspconfig["wasm"].setup({
+		--	capabilities = capabilities,
+		--	on_attach = on_attach,
+		--})
+
 		-- configure lua server (with special settings)
-		lspconfig["lua_ls"].setup({
+		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = { -- custom settings for lua

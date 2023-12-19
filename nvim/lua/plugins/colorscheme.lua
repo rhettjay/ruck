@@ -1,7 +1,10 @@
 return {
-	"folke/tokyonight.nvim",
-	lazy = false,
-	config = function()
-		vim.cmd.colorscheme = "tokyonight"
+	"craftzdog/solarized-osaka.nvim",
+	lazy = true,
+	pioririty = 1000,
+	opts = function()
+		return {
+			transparent = true,
+		}
 	end,
 }
