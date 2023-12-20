@@ -4,7 +4,7 @@ return {
 	cmd = { "ConformInfo" },
 	keys = {
 		{
-			"<leader>f",
+			"<leader>FF",
 			function()
 				require("conform").format({ async = true, lsp_fallback = true })
 			end,
@@ -15,12 +15,9 @@ return {
 	opts = {
 		formatters_by_ft = {
 			lua = { "stylua" },
-			python = { "isort", "black" },
-			typescript = { { "tsstandard", "prettier" } },
-			javascript = { { "standard", "prettier" } },
-			["*"] = { "codespell" },
-			-- if a file doesn't have formatter at least trime whitespace
-			["_"] = { "trim_whitespace" },
+			-- python = { "isort", "black" },
+			typescript = { "tsstandard" },
+			javascript = { "standard" },
 		},
 		-- Don't set format_on_save lazy uses conform automatically
 		-- format_on_save = { lsp_fallback = true, timeout_ms = 500 },
