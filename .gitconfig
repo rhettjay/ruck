@@ -1,0 +1,28 @@
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[user]
+	name = jay-bulk
+	email = jay.bulk@proton.me
+[commit]
+	gpgsign = true
+[merge]
+	tool = nvim
+[mergetool "nvim"]
+	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+[init]
+	defaultBranch = main
+[core]
+	editor = nvim
+	excludesfile = /Users/jaybulk/.config/.gitignore_global
+	pager = delta
+[delta]
+	line-numbers = true
+	syntax-theme = gruvbox
+	side-by-side = false
+[interactive]
+	diffFilter = delta --color-only
+[color]
+	ui = true

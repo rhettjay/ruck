@@ -1,26 +1,41 @@
 return {
 	"stevearc/conform.nvim",
+	dependencies = {
+		"mason.nvim",
+	},
 	event = { "BufWritePre" },
-	cmd = { "ConformInfo" },
+	cmd = "ConformInfo",
 	keys = {
 		{
-			"<leader>FF",
+			"<leader>cF",
 			function()
-				require("conform").format({ async = true, lsp_fallback = true })
+				require("conform").format({ formatters = { "injected" } })
 			end,
-			mode = "",
+			mode = { "n", "v" },
 			desc = "Format buffer",
 		},
 	},
-	opts = {
-		formatters_by_ft = {
-			lua = { "stylua" },
-			-- python = { "isort", "black" },
-			typescript = { "tsstandard" },
-			javascript = { "standard" },
-		},
-		-- Don't set format_on_save lazy uses conform automatically
-		-- format_on_save = { lsp_fallback = true, timeout_ms = 500 },
-		notify_on_error = true,
-	},
+	opts = function()
+		if plugin.config ~= M.setup then
+			vim.util.error({
+				"Don't set `plugin.config` for `conform.nvim`.\n",
+				"This will break **LazyVim** formatting.\n",
+				"Please refer to the docs at https://www.lazyvim.org/plugins/formatting",
+			}, { title = "LazyVim" })
+		end
+		local opts = {
+			format = {
+				timeout_ms = 3000,
+				async = false,
+				quiet = false,
+			},
+			formatters_by_ft = {
+				lua = { "stylua" },
+				typescript = { "ts-standard" },
+				javascript = { "standardjs" },
+			},
+			format_on_save = false,
+		}
+		return opts
+	end,
 }
