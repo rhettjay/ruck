@@ -28,8 +28,8 @@ vim.wo.nu = true
 opt.clipboard = "unnamedplus"
 
 -- Save undo history
-opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-opt.undofile = true
+-- opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+-- opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
 opt.ignorecase = true
