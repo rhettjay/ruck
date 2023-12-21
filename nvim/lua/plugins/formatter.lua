@@ -16,13 +16,13 @@ return {
 		},
 	},
 	opts = function()
-		if plugin.config ~= M.setup then
-			vim.util.error({
-				"Don't set `plugin.config` for `conform.nvim`.\n",
-				"This will break **LazyVim** formatting.\n",
-				"Please refer to the docs at https://www.lazyvim.org/plugins/formatting",
-			}, { title = "LazyVim" })
-		end
+		--		if plugin.config ~= M.setup then
+		--			vim.util.error({
+		--				"Don't set `plugin.config` for `conform.nvim`.\n",
+		--				"This will break **LazyVim** formatting.\n",
+		--				"Please refer to the docs at https://www.lazyvim.org/plugins/formatting",
+		--			}, { title = "LazyVim" })
+		--		end
 		local opts = {
 			format = {
 				timeout_ms = 3000,
@@ -34,7 +34,7 @@ return {
 				typescript = { "ts-standard" },
 				javascript = { "standardjs" },
 			},
-			format_on_save = false,
+			--			format_on_save = false,
 		}
 		return opts
 	end,
