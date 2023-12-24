@@ -1,4 +1,4 @@
-return {
+rhttps://socket.dev/npm/package/standard/overview/17.1.0eturn {
 	"telescope.nvim",
 	dependencies = {
 		"nvim-telescope/telescope-file-browser.nvim",
@@ -82,7 +82,7 @@ return {
 	config = function(_, opts)
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
-		local fb_actions = require("telescope").extension.file_browser.action
+		local fb_actions = require("telescope").extension.file_browser.actions
 
 		opts.default = vim.tbl_deep_extend("force", opts.default, {
 			wrap_results = true,
