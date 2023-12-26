@@ -12,6 +12,12 @@ return {
 	-- "gc" to comment visual regions/lines
 	"numToStr/Comment.nvim",
 	{
+		"kylechui/nvim-surround",
+		config = function()
+			require("nvim-surround").setup()
+		end,
+	},
+	{
 		-- Set lualine as statusline
 		"nvim-lualine/lualine.nvim",
 		-- See `:help lualine.txt`
