@@ -18,6 +18,18 @@
 	editor = nvim
 	excludesfile = /Users/jaybulk/.config/.gitignore_global
 	pager = delta
+[alias]
+    co = checkout
+    branch = switch
+    br = switch
+    ct = commit
+    st = status
+    sta = status
+    stat = status
+    rev-pasre = rev-parse
+    rev-pares = rev-parse
+    rev-prase = rev-parse
+    rt = rev-parse --top-level
 [delta]
 	line-numbers = true
 	syntax-theme = gruvbox

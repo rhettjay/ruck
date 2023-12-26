@@ -114,6 +114,20 @@ alias gpush="git push";
 alias gd="git diff";
 alias ga="git add .";
 alias sw="git switch"
+#** cd to the project root and graph the git tree
+function groot { 
+  if git remote -v; 
+    ROOT_DIR=`git rev-parse --show-top-level`
+  then 
+    cd $ROOT_DIR && git log --graph --pretty="%C(bold blue) Hash: %h %C(cyan)(%ar) %C(red) %s"; 
+  else
+    # not a git repo
+    return 1
+  fi
+}
+
+#** rt is git alias to git rev-parse --show-top-level **
+function root { cd $( git rt ) }
 dif() { git diff --color --no-index "$1" "$2" | diff-so-fancy; }
 cdiff() { code --diff "$1" "$2"; }
 
