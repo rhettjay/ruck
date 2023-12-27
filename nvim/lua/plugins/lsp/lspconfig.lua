@@ -50,7 +50,21 @@ return {
 			keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
 			opts.desc = "Restart LSP"
-			keymapsset("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+			keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+			-- this runs on the update date which is currently set to 250 in ../../config/options.lua
+			vim.o.updatetime = 250
+			vim.diagnostic.config({ virtual_text = false, update_in_insert = true, signs = true })
+			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+				buffer = opts.bufnr,
+				callback = function()
+					local options = {
+						focusable = false,
+						border = "rounded",
+					}
+					vim.diagnostic.open_float(nil, options)
+				end,
+			})
 		end
 
 		-- used to enable autocompletion (assign to every lsp server config)
@@ -72,21 +86,50 @@ return {
 
 		-- configure typescript server with plugin
 		lspconfig.tsserver.setup({
+			capabilities = capabilities,
 			on_attach = on_attach,
+			root_dir = function(...)
+				return require("lspconfig.util").root_pattern(".git")(...)
+			end,
+			typescript = {
+				inlayHints = {
+					includeInlayEnumMemberValueHints = true,
+					includeInlayFunctionLikeReturnTypeHints = true,
+					includeInlayFunctionParameterTypeHints = true,
+					includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+					includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+					includeInlayPropertyDeclarationTypeHints = true,
+					includeInlayVariableTypeHints = true,
+				},
+			},
+			javascript = {
+				inlayHints = {
+					includeInlayEnumMemberValueHints = true,
+					includeInlayFunctionLikeReturnTypeHints = true,
+					includeInlayFunctionParameterTypeHints = true,
+					includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+					includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+					includeInlayPropertyDeclarationTypeHints = true,
+					includeInlayVariableTypeHints = true,
+				},
+			},
 		})
 
 		-- configure eslint server with plugin
 		lspconfig.eslint.setup({
+			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure css server
 		lspconfig.cssls.setup({
+			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure svelte server
 		lspconfig.svelte.setup({
+			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
