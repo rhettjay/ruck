@@ -90,6 +90,12 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 zstyle ':completion:*:*:cp:*' file-sort modification reverse
 ## menu
 zstyle ':completion:*' menu select
+##
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'style ':completion:*' menu select
+## autcomplete
+setopt AUTO_LIST
+## autocomplete dot files
+_comp_options+=(globdots) # With hidden files
 
 ## bindkeys for menu navigation
 zmodload zsh/complist
