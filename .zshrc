@@ -183,58 +183,30 @@ export PATH="$WASMTIME_HOME/bin:$PATH"
 # Autosuggestions in terminal
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-#Nix
-##alias nix-shell="nix-shell --run zsh"
-#if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-# . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-#fi
+#|---Nix---|
+alias nix-shell="nix-shell --run zsh"
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+ . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
 # End Nix
-#
-#
-#
-####---- NEW TERM CONFIGURATION --- ####
-# function random_element {
-#  declare -a array=("$@")
-#  r=$(($RANDOM % ${#array[@]}))
-#  printf "%s\n" "${array[$r]}"
-#}
-#
+
+ function random_element {
+  declare -a array=("$@")
+  r=$(($RANDOM % ${#array[@]}))
+  printf "%s\n" "${array[$r]}"
+}
+
 ## Default Prompt
-#setEmoji () {
-#  EMOJI="$*"
-#  DISPLAY_DIR='$(dirs)'
-#  DISPLAY_BRANCH='$(git_branch)'
-#  PROMPT='%u%~${vcs_info_msg_0_} ${EMOJI} '
-#}
-#
-#newRandomEmoji () {
-#  setEmoji "$(random_element 👽 🔥 🚀 👻 ⛄ 👾 🐑 🏎 🤖 🦄 🌮 🐳 🐿 🐵 🐻 🦊 🐙 🦎 🦖 🦕 🦍 🦈 🐊 🦂 🐢 🐘 🐉 ⚡️ 🔱 🦑)"
-#}
-#
-#newRandomEmoji
-#  
-#HISTSIZE=5000
-#HISTFILESIZE=10000
-#SAVEHIST=5000
-#setopt EXTENDED_HISTORY
-#HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
-#setopt SHARE_HISTORY
-#setopt APPEND_HISTORY
-#setopt INC_APPEND_HISTORY
-#setopt HIST_IGNORE_DUPS
-#
-## Custom bin
-#PATH="$PATH:$HOME/.bin"
-#
-#autoload -U colors && colors
-#autoload -Uz vcs_info
-#
-#zstyle ':vcs_info:*' enable git svn
-#precmd() {
-#    vcs_info
-#}
-#
-#setopt prompt_subst
-#
-#zstyle ':vcs_info:git*' formats "%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
+setEmoji () {
+  EMOJI="$*"
+  DISPLAY_DIR='$(dirs)'
+  DISPLAY_BRANCH='$(git_branch)'
+  PROMPT='%u%~${vcs_info_msg_0_} ${EMOJI} '
+}
+
+newRandomEmoji () {
+  setEmoji "$(random_element 👽 🔥 🚀 👻 ⛄ 👾 🐑 🏎 🤖 🦄 🌮 🐳 🐿 🐵 🐻 🦊 🐙 🦎 🦖 🦕 🦍 🦈 🐊 🦂 🐢 🐘 🐉 ⚡️ 🔱 🦑)"
+}
+
+newRandomEmoji
 
