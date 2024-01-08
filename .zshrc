@@ -63,6 +63,8 @@ setopt HIST_IGNORE_DUPS
 # Custom bin
 PATH="$PATH:$HOME/.bin:$HOME/.cargo/bin:$HOME/bin:$HOME/sandbox/web-assembly-crt/wabt/build"
 
+source ./zsh-aliases
+
 autoload -U colors && colors
 autoload -Uz vcs_info
 
@@ -104,55 +106,6 @@ bindkey -M menuselect 'l' vi-forward-char
 # autoload -Uz edit-command-line
 # zle -N edit-command-line
 # bindkey -M vicmd v edit-command-line
-
-## git aliases
-function gc { git commit -m "$@"; }
-alias gs="git status";
-alias gp="git pull";
-alias gf="git fetch";
-alias gpush="git push";
-alias gd="git diff";
-alias ga="git add .";
-alias sw="git switch"
-#** cd to the project root and graph the git tree
-function groot { 
-  if git remote -v; 
-    ROOT_DIR=`git rev-parse --show-top-level`
-  then 
-    cd $ROOT_DIR && git log --graph --pretty="%C(bold blue) Hash: %h %C(cyan)(%ar) %C(red) %s"; 
-  else
-    # not a git repo
-    return 1
-  fi
-}
-
-#** rt is git alias to git rev-parse --show-top-level **
-function root { cd $( git rt ) }
-dif() { git diff --color --no-index "$1" "$2" | diff-so-fancy; }
-cdiff() { code --diff "$1" "$2"; }
-
-function clone { if [[ $PWD == ~/work ]];
-  then
-    gh repo clone "$WORK"/$1;
-  else
-    gh repo clone $1;
-  fi;
-}
-
-# terraform quick access
-alias initt="terraform init";
-alias inittu="terraform init -upgrade";
-alias plan-t="terraform plan";
-alias tapply="terraform plan -apply";
-
-## eza (exa replacement -- ls replacement) aliases
-alias ld="eza -lD"
-alias lf="eza -lF --color=always | grep -v /"
-alias lh="eza -dl .* --group-directories-first"
-alias ls="eza --group-directories-first"
-alias sl="ls"
-alias ll="eza -alF --color=always --sort=size | grep -v /"
-alias lt="eza -al --sort=modified"
 
 export GPG_TTY=\$(tty)
 alias vim="nvim"
