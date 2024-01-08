@@ -27,8 +27,9 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
-				["Tab"] = cmp.mapping.select_next_item(),
-				["Shift-Tab"] = cmp.mapping.select_prev_item(),
+				["<Tab>"] = cmp.mapping.confirm({ select = false }),
+				["<C-j>"] = cmp.mapping.select_next_item(),
+				["<C-k>"] = cmp.mapping.select_prev_item(),
 			}),
 			sources = cmp.config.sources({
 				{ name = "luasnip" },
