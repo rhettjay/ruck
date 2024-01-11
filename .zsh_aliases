@@ -55,6 +55,7 @@ alias ..l="cd ../ && ll"
 alias dev="cd ~/dev"
 
 # vim alias
+alias ,="nvim"
 alias vim="nvim"
 alias vi="nvim"
 alias vz="vi ~/.zshrc"
