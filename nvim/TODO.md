@@ -8,3 +8,5 @@ The impetus is that I get busy writing code and forget to sharpen my axe every n
 [Optimize]
 [Deprecate]
 - jaybulk dir doesn't do anything useful. Can probably delete it or move this file into it...
+- fix tab to make sense on any machine
+- fix remap of ,q for floating diagnostic
