@@ -2,6 +2,23 @@ repo_dirs=(dev sandbox learn)
 npm_pks=()
 configs=(nvim gh bat iterm tmux)
 wdg=(.zshrc .zprofile)
+
+echo "WARNING: this will overwrite your config"
+echo "Would you like to proceed? (y/N)
+
+# read in answer
+rm -rf ~/.zshrc && cp ./zshrc ~/.zshrc
+source ~/.zshrc
+
+# build file structure
+# if brew is setup run full otherwise evspecify
+# check which things have changed local manfest
+
+
+# copy nvim config
+# npm install globals
+# build all local dev projects under dev
+
 for i in ${!repo_dirs[@]}; do
 	dir=${repo_drs[$i]}
 	echo "checking repos under ${dir}"
