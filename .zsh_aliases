@@ -1,11 +1,15 @@
 ## git aliases
-function gc { git commit -m "$@"; }
+function gcommit { git commit -m "$@"; }
+## add explicity alias so I can search it with alias
+alias gc="gcommit";
+
 alias gs="git status";
 alias gp="git pull";
 alias gup="git push -u origin ${vcs_info_msg_0_}";
 alias gf="git fetch";
 alias gpush="git push";
-alias gd="git diff";
+alias updates="git diff -- . ':(exclude)*-lock.json'";
+alias changes="git diff --stat -- .";
 alias ga="git add .";
 alias switch="git switch";
 alias glone="gh repo clone";
