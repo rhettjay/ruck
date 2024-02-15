@@ -64,6 +64,50 @@ alias vim="nvim"
 alias vi="nvim"
 alias vz="vi ~/.zshrc"
 alias sz=". ~/.zshrc"
+alias salias=". ~/rucksack/.zsh_aliases"
 alias cpz="rm -i ~/rucksack/.zshrc cp ~/.zshrc rucksack/"
 alias sack="rm -irf ~/rucksack cp ~/.zshrc rucksack/"
 alias ruck="rm -irf ~/.config/ cp ~/rucksack/.config ~/.config"
+
+
+# All the important functions (print them to term and copy them)
+d() { 
+  EYES=" ಠ_ಠ "
+  printf "%s" $EYES | tee /dev/tty | pbcopy && printf "\n";
+}
+
+f() { 
+  TABLE="（╯°□°）╯ ┻━┻"
+  printf "%s" $TABLE | tee /dev/tty | pbcopy && printf "\n";
+}
+
+s() { SHRUG="¯\_(ツ)_/¯"
+  printf "%s" $SHRUG | tee /dev/tty | pbcopy && printf "\n";
+}
+
+function curl-cert() {
+  openssl s_client -showcerts -connect "${1}":443 -servername ${1}
+}
+
+function awsp() {
+    export AWS_PROFILE=$(grep profile ${HOME}/.aws/config \
+        | awk '{print $2}' | sed 's,],,g' \
+        | fzf --layout reverse --height=10% --border)
+}
+
+function fshow() {
+  git log --graph --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" \
+  | fzf --ansi --preview "echo {} \
+    | grep -o '[a-f0-9]\{7\}' \
+    | head -1 \
+    | xargs -I % sh -c 'git show --color=always %'" \
+        --bind "enter:execute:
+            (grep -o '[a-f0-9]\{7\}' \
+                | head -1 \
+                | xargs -I % sh -c 'git show --color=always % \
+                | less -R') << 'FZF-EOF'
+            {}
+FZF-EOF"
+}
+
