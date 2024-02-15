@@ -13,6 +13,7 @@ alias changes="git diff --stat -- .";
 alias ga="git add .";
 alias switch="git switch";
 alias glone="gh repo clone";
+alias diff='delta'
 
 #** cd to the project root and graph the git tree
 function groot { 

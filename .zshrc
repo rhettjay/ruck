@@ -93,8 +93,11 @@ zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'style '
 #+-----------------------------------------+
 
 # Add all the zsh aliases
-source ./zsh_env
-source ./zsh-aliases
+#
+export XDG_CONFIG_HOME="${HOME}/.config"
+export RUCKSACK_HOME="${HOME}/rucksack"
+source ${RUCKSACK_HOME}/.zshenv
+source ${RUCKSACK_HOME}/.zsh-aliases
 
 # Autosuggestions in terminal
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
