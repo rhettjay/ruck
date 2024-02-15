@@ -12,6 +12,7 @@ return {
 				"http",
 				"javascript",
 				"java",
+				"kotlin",
 				"lua",
 				"php",
 				"rust",

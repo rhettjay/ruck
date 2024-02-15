@@ -34,7 +34,7 @@ return {
 				typescript = { "ts-standard" },
 				javascript = { "standardjs" },
 			},
-			--			format_on_save = false,
+			format_on_save = false,
 		}
 		return opts
 	end,
