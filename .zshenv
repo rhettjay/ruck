@@ -17,6 +17,11 @@ setopt AUTO_LIST
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# Autosuggestions in terminal
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# autocomplete hidden files
+_comp_options+=(globdots)
+
 #+--------------+
 #| Path options |
 #+--------------+
