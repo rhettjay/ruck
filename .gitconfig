@@ -5,7 +5,7 @@
 	smudge = git-lfs smudge -- %f
 [user]
 	name = jay-bulk
-	email = jay.bulk@proton.me
+	email = jay.bulk@tuta.io
 [commit]
 	gpgsign = true
 [merge]
