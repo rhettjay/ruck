@@ -87,16 +87,16 @@
           "knobs" : {
             "path" : "path",
             "maxwidth" : 1.7976931348623157e+308,
+            "base: priority" : 5,
+            "base: compression resistance" : 1,
+            "minwidth" : 0,
             "shared text color" : {
               "Red Component" : 0.90000000000000002,
               "Color Space" : "sRGB",
               "Blue Component" : 0.63,
               "Alpha Component" : 1,
               "Green Component" : 0.87570000000000003
-            },
-            "minwidth" : 0,
-            "base: priority" : 5,
-            "base: compression resistance" : 1
+            }
           },
           "layout advanced configuration dictionary value" : {
             "remove empty components" : false,
@@ -113,14 +113,14 @@
             "maxwidth" : 1.7976931348623157e+308,
             "base: priority" : 5,
             "minwidth" : 0,
+            "base: compression resistance" : 1,
             "shared text color" : {
               "Red Component" : 0.67859999999999998,
               "Color Space" : "sRGB",
               "Blue Component" : 0.63,
               "Alpha Component" : 1,
               "Green Component" : 0.90000000000000002
-            },
-            "base: compression resistance" : 1
+            }
           },
           "layout advanced configuration dictionary value" : {
             "remove empty components" : false,
@@ -134,8 +134,10 @@
         "class" : "iTermStatusBarGitComponent",
         "configuration" : {
           "knobs" : {
-            "minwidth" : 0,
+            "base: priority" : 5,
             "iTermStatusBarGitComponentPollingIntervalKey" : 2,
+            "base: compression resistance" : 1,
+            "minwidth" : 0,
             "shared text color" : {
               "Red Component" : 0.63,
               "Color Space" : "sRGB",
@@ -143,8 +145,6 @@
               "Alpha Component" : 1,
               "Green Component" : 0.90000000000000002
             },
-            "base: priority" : 5,
-            "base: compression resistance" : 1,
             "maxwidth" : 1.7976931348623157e+308
           },
           "layout advanced configuration dictionary value" : {
