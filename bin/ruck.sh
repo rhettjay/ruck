@@ -1,14 +1,39 @@
-repo_dirs=(dev sandbox learn)
-npm_pks=()
-configs=(nvim gh bat iterm tmux)
-wdg=(.zshrc .zprofile)
+#!/bin/bash
+
+# repo_dirs=(dev sandbox learn)
+# npm_pks=()
+# configs=(nvim gh bat iterm tmux)
+# wdg=(.zshrc .zprofile)
+
+function install () {
+	echo "Proceeding with destructive action";
+	rm -rf ~/.config/* && cp -r $RUCKSACK_NVIM ~/.config;
+	echo "Rucksack unpacked";
+	exit;
+}
+
+export HOME_CONFIG="~/.config"
+export RUCKSACK_NVIM="~/rucksack/nvim/"
 
 echo "WARNING: this will overwrite your config"
-echo "Would you like to proceed? (y/N)
+
+read -p "Do you want to proceed? (yes/no) " yn
+
+case $yn in
+    yes ) install;;
+    no ) echo "exiting...";
+	exit;;
+    * ) echo "invalid response";
+	exit;;
+esac
+
+exit
+
+
 
 # read in answer
-rm -rf ~/.zshrc && cp ./zshrc ~/.zshrc
-source ~/.zshrc
+# rm -rf ~/.zshrc && cp ./zshrc ~/.zshrc
+# source ~/.zshrc
 
 # build file structure
 # if brew is setup run full otherwise evspecify
@@ -19,17 +44,3 @@ source ~/.zshrc
 # npm install globals
 # build all local dev projects under dev
 
-for i in ${!repo_dirs[@]}; do
-	dir=${repo_drs[$i]}
-	echo "checking repos under ${dir}"
-	# gh repo list ${org} --json name,latestRelease,visibility,lastUpdated | npx json | > ${file}.json
-for i in ${!configs[@]}; do
-	config=${configs[$i]}
-	echo "throwing ${config} into your rucksack..."
-	cp -f -r ~/.config/${config} .
-done
-for i in ${!wdg[@]}; do
-	item=${wdg[$i]}
-	echo "copying ${item} into your rucksack..."
-	cp -f -r ~/${item} .
-done
