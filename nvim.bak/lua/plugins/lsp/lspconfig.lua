@@ -51,6 +51,20 @@ return {
 
 			opts.desc = "Restart LSP"
 			keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+			-- this runs on the update date which is currently set to 250 in ../../config/options.lua
+			vim.o.updatetime = 250
+			vim.diagnostic.config({ virtual_text = false, update_in_insert = true, signs = true })
+			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+				buffer = opts.bufnr,
+				callback = function()
+					local options = {
+						focusable = false,
+						border = "rounded",
+					}
+					vim.diagnostic.open_float(nil, options)
+				end,
+			})
 		end
 
 		-- used to enable autocompletion (assign to every lsp server config)
@@ -65,48 +79,62 @@ return {
 		end
 
 		-- configure html server
-		lspconfig["html"].setup({
+		lspconfig.html.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure typescript server with plugin
-		lspconfig["tsserver"].setup({
+		lspconfig.tsserver.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			root_dir = function(...)
+				return require("lspconfig.util").root_pattern(".git")(...)
+			end,
+			typescript = {
+				inlayHints = {
+					includeInlayEnumMemberValueHints = true,
+					includeInlayFunctionLikeReturnTypeHints = true,
+					includeInlayFunctionParameterTypeHints = true,
+					includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+					includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+					includeInlayPropertyDeclarationTypeHints = true,
+					includeInlayVariableTypeHints = true,
+				},
+			},
+			javascript = {
+				inlayHints = {
+					includeInlayEnumMemberValueHints = true,
+					includeInlayFunctionLikeReturnTypeHints = true,
+					includeInlayFunctionParameterTypeHints = true,
+					includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+					includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+					includeInlayPropertyDeclarationTypeHints = true,
+					includeInlayVariableTypeHints = true,
+				},
+			},
+		})
+
+		-- configure eslint server with plugin
+		lspconfig.eslint.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure css server
-		lspconfig["cssls"].setup({
+		lspconfig.cssls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure svelte server
-		lspconfig["svelte"].setup({
-			capabilities = capabilities,
-			on_attach = function(client, bufnr)
-				on_attach(client, bufnr)
-
-				vim.api.nvim_create_autocmd("BufWritePost", {
-					pattern = { "*.js", "*.ts" },
-					callback = function(ctx)
-						if client.name == "svelte" then
-							client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
-						end
-					end,
-				})
-			end,
-		})
-
-		-- configure python server
-		lspconfig["pyright"].setup({
+		lspconfig.svelte.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure lua server (with special settings)
-		lspconfig["lua_ls"].setup({
+		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = { -- custom settings for lua

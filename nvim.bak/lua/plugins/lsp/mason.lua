@@ -18,15 +18,23 @@ return {
 		mason.setup({})
 		mason_lspconfig.setup({
 			ensure_installed = {
+				"biome",
 				"gopls",
 				"cssls",
 				"svelte",
 				"html",
 				"lua_ls",
-				"pyright",
 				"rust-analyzer",
 				"terraformls",
 				"tsserver",
+			},
+			formatting = {
+				disabled = {
+					"biome",
+					"rust-analyzer",
+					"tsserver",
+					"typescript-langauge-server",
+				},
 			},
 			automatic_installation = true,
 		})
