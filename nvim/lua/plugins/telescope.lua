@@ -1,54 +1,18 @@
-rhttps://socket.dev/npm/package/standard/overview/17.1.0eturn {
+return {
 	"telescope.nvim",
+	cmd = "Telescope",
 	dependencies = {
+		"nvim-lua/plenary.nvim",
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-telescope/telescope-file-browser.nvim",
 	},
 	keys = {
+		{ "<leader>,", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Switch Buffer" },
 		{
-			"<leader>fP",
-			function()
-				require("telescope.builtin").find_files({
-					cwd = require("lazy.core.config").options.root,
-				})
-			end,
-			desc = "Find Plugin File",
-		},
-		{
-			";f",
-			function()
-				local builtin = require("telescope.builtin")
-				builtin.find_files({
-					no_ignore = false,
-					hidden = true,
-				})
-			end,
-		},
-		{
-			";r",
+			"<leader>/",
 			function()
 				local builtin = require("telescope.builtin")
 				builtin.live_grep()
-			end,
-		},
-		{
-			";t",
-			function()
-				local builtin = require("telescope.builtin")
-				builtin.buffers()
-			end,
-		},
-		{
-			";;",
-			function()
-				local builtin = require("telescope.builtin")
-				builtin.resume()
-			end,
-		},
-		{
-			";e",
-			function()
-				local builtin = require("telescope.builtin")
-				builtin.diagnostics()
 			end,
 		},
 		{
