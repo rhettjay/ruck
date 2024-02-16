@@ -48,8 +48,11 @@ export VISUAL="nvim"
 # GPG Key
 export GPG_TTY=\$(tty)
 
+# Rust Home
+export PATH="$PATH:$HOME/.cargo/bin"
 # Add .bin .cargo/bin /bin and wabt/build to bin
 PATH="$PATH:$HOME/.bin:$HOME/.cargo/bin:$HOME/bin:$HOME/sandbox/web-assembly-crt/wabt/build"
+source "$HOME/.cargo/env"
 
 #WASM HOME
 export WASMTIME_HOME="$HOME/.wasmtime"
