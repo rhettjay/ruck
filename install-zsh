@@ -1,0 +1,9 @@
+#!/bin/zsh
+mv ./.zshrc ~/
+mv ./.zshenv ~/
+mv ./.zsh_aliases ~/
+
+source ~/.zshrc
+source ~/.zshenv
+source ~/.zsh_aliases
+

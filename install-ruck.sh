@@ -1,10 +1,8 @@
-[ ! -f install_config ] && cp install_config .config
+export WD_CONFIG_HOME="~/.config/"
+./install-zsh
 
-source ~/.zshenv
-source ~/.zshrc
-source ~/.zprofile
 
-. "$WD_CONFIG_HOME/install-zsh"
-
+# Add ruck to bin
+sed -i -e '$a\'$'\n''export PATH=${WD_CONFIG_HOME}/bin' ~/.zshenv
 #install git
 #install nvim
