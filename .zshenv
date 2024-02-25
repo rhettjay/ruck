@@ -67,3 +67,10 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # most important functions
+
+#+------------------+
+#| JQ Color options |
+#+------------------+
+#
+# Color Pattern: "null:false:true:numbers:strings:arrays:objects:object keys" [0;31:...]
+export JQ_COLORS="0;90:0;39:0;39:0;39:0;32:1;39:1;39:1;36"
