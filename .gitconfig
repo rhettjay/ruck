@@ -1,24 +1,36 @@
-[filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
 [user]
 	name = jay-bulk
 	email = jay.bulk@tuta.io
 [commit]
 	gpgsign = true
-[merge]
-	tool = nvim
-[mergetool "nvim"]
-	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [init]
 	defaultBranch = main
+[merge]
+	tool = nvim
+    conflictstyle = diff3
+[mergetool "nvim"]
+	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [core]
 	editor = nvim
 	excludesfile = /Users/jaybulk/.config/.gitignore_global
 	pager = delta
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[delta]
+	line-numbers = true
+	syntax-theme = gruvbox
+	side-by-side = false
+	navigate = true
+	light = false
+[interactive]
+	diffFilter = delta --color-only
+[color]
+	ui = true
 [alias]
+    farse = force --force-with-lease
     co = checkout
     branch = switch
     br = switch
@@ -30,11 +42,21 @@
     rev-pares = rev-parse
     rev-prase = rev-parse
     rt = rev-parse --top-level
-[delta]
-	line-numbers = true
-	syntax-theme = gruvbox
-	side-by-side = false
-[interactive]
-	diffFilter = delta --color-only
-[color]
-	ui = true
+    fault = blame -w -C -C -C -L
+[diff]
+    colorMoved = default
+[includeIf "gitdir:~/work/"]
+    path = ~/work/.gitconfig
+[includeIf "gitdir:~/dev/"]
+    path = ~/dev/.gitconfig
+[includeIf "gitdir:~/oss/"]
+    path = ~/oss/.gitconfig
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[maintenance]
+    auto = false
+    strategy = incremental
