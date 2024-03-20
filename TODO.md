@@ -7,3 +7,4 @@ Add script to automagically install configurations from volta, npm, brew, and nv
 - npm: ?
 - brew: Brewfile?
 
+.zsh_config and obfuscation of env variables/encryption
