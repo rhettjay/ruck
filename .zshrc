@@ -19,38 +19,99 @@ light_magenta="\033[95m"
 light_cyan="\033[96m"
 white="\033[97m"
 
-# +------------------------------------------------------------------+
-# | Emoji prompt: Useful for mentally differentiating iterm contexts |
-# +------------------------------------------------------------------+
-setEmoji () {
-  EMOJI="$*"
-  DISPLAY_DIR='$(dirs)'
-  DISPLAY_BRANCH='$(git_branch)'
-  PROMPT='%u%~${vcs_info_msg_0_} ${EMOJI} '
-}
-
-newRandomEmoji () {
-  setEmoji "$(random_element 👽 🔥 🚀 👻 👾 🐑 🤖 🦄 🌮 🐳 🐵 🐻 🦊 🐙 🦎 🦖 🦕 🦍 🦈 🐊 🦂 🐢 🐘 🐉 ⚡️ 🔱 🦑)"
-}
-
-newRandomEmoji
-
 autoload -U colors && colors
 autoload -Uz vcs_info
 
-zstyle ':vcs_info:*' enable git svn
-precmd() {
-    vcs_info
+# zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' check-for-changes true
+## Add git info to zle
+
+# %r = repo name
+# %R = abosolute repo path
+# %s = vcs in use (git, svn, mercury)
+# %S = subdir within repo
+# %{%} = escaped sequence
+# %b = branch
+# %m = misc replacement (git rebase/cherry-pick) controlled by patch-format/no-patch-format
+# %u = The string from the unstagedstr style if there are unstaged changes in the repository.
+# %c = number of unapplied patches
+zstyle ':vcs_info:git:*' action-formats "%r%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
+zstyle ':vcs_info:git:*' formats "%r%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
+zstyle ':vcs_info:git:*' patch-formats "%r%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
+
+# +--------+
+# | prompt |
+# +--------+
+#
+# setPrompt () {
+#   EMOJI="$*"
+#   DISPLAY_DIR='$(vcs_info)'
+#   DISPLAY_BRANCH='$(git_branch)'
+#   PROMPT='%~%{vcs_info_msg_0} ${vcs_info_msg_0_} ${EMOJI} '
+#   # Old Prompt included full directory listing
+#   #PROMPT='%u%~${vcs_info_msg_0_} ${EMOJI} '
+# }
+
+# https://unix.stackexchange.com/questions/287330/accessing-random-array-element-in-zsh
+# Randel picks a random element from the given list
+function randEL {
+ declare -a array=("$@")
+ r=$(($RANDOM % ${#array[@]}))
+ printf "%s\n" "${array[$r]}"
+ return r
 }
 
-PROMPT='%u%~${vcs_info_msg_0_} $EMOJI '
+
+function getPromptOpts {
+  TERM_ID="$(randEL 🚀 👻 👾 🦄 🐳 🐻 🦊 🐙 🦖 🦕 🐢 🐉 ⚡️ 🔱 🦑)"
+  DISPLAY_DIR="$(dirs)"
+  LOCAL_SECRETS=" "
+  DEFAULT_PROMPT="%u%~${vcs_info_msg_0_} ${TERM_ID}${LOCAL_SECRETS} "
+}
+
+# function cd () {
+#   builtin cd "$@" && [[ -f .zsh_config ]] && . .aliases
+#   return 0
+# }
+
+function chpwd() {
+  # DISPLAY_DIR="$(git rev-parse --show-toplevel --sq --path-format=relative --quiet)"
+  # if [[ -z vcs_info ]]; then
+  # else
+  #   if [[ -s "./zsh_config" || -s "${DISPLAY_DIR}/.zsh_config" ]]; then
+  #     source "$DISPLAY_DIR/.zsh_config"
+  #     LOCAL_SECRETS="^"
+  #   fi
+  # fi
+}
+
+getPromptOpts
+
+precmd() {
+    vcs_info
+
+    if [[ -z $vcs_info_msg_0_ ]]; then
+      PROMPT="%3~ ${TERM_ID} "
+      export PRD_CLIENT="NOT SET"
+      export PRD_SECRET="NOT SET"
+      export DEV_CLIENT="NOT SET"
+      export DEV_SECRET="NOT SET"
+    else
+      DISPLAY_DIR="$(git rev-parse --show-toplevel --sq --path-format=relative --quiet)"
+      if [[ -s "./${DISPLAY_DIR}/.zsh_config" ]]; then
+        source "./$DISPLAY_DIR/.zsh_config"
+      fi
+      PROMPT="%B%F{white}%f%b ${vcs_info_msg_0_}🔥${TERM_ID%2%G} "
+    fi
+}
+
+
+
 
 #+----------------+
 #| Zstyle options |
 #+----------------+
 
-## Add git info to zle
-zstyle ':vcs_info:git*' formats "%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
 ## Ignore .lock files when using tab
 zstyle ':completion:*:*:vim:*:files' ignored-patterns '*.lock'
 ## Add groups with autotab
@@ -67,6 +128,8 @@ zstyle ':completion:*:*:cp:*' file-sort modification reverse
 zstyle ':completion:*' menu select
 ##
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'style ':completion:*' menu select
+
+#eval "$(op completion zsh)"; compdef _op op
 
 
 #+------------------+
@@ -92,15 +155,8 @@ zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'style '
 #| Prompt suggestions & Sourcing zsh files |
 #+-----------------------------------------+
 
-# Add all the zsh aliases
-#
-export XDG_CONFIG_HOME="${HOME}/.config"
-export RUCKSACK_HOME="${HOME}/rucksack"
-source ${RUCKSACK_HOME}/.zshenv
-source ${RUCKSACK_HOME}/.zsh-aliases
 
-# Autosuggestions in terminal
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# autocomplete hidden files
-_comp_options+=(globdots)
+# Add all the zsh aliases
+source ~/rucksack/.zshenv
+source ~/rucksack/.zsh_aliases
 
