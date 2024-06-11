@@ -28,6 +28,15 @@ function groot {
   fi
 }
 
+function branch-trim {
+  if git branch -v;
+  then
+    git branch --merged | egrep -v "(^\*|prd|dev)" | xargs git branch -d; return 0
+  else
+    return 1
+  fi
+}
+
 #** rt is git alias to git rev-parse --show-top-level **
 function root { cd $( git rt ) }
 
@@ -53,7 +62,6 @@ alias ll="eza -alF --color=always --sort=size";
 alias lt="eza -al --sort=modified -F -T";
 
 # zle stuff
-alias grep="rg"
 alias ..="cd ../"
 alias ..w="cd ~/work"
 alias ...="cd ~/"
@@ -113,3 +121,21 @@ function fshow() {
 FZF-EOF"
 }
 
+function decode_base64_url() {
+  local len=$((${#1} % 4))
+  local result="$1"
+  if [ $len -eq 2 ]; then result="$1"'=='
+  elif [ $len -eq 3 ]; then result="$1"'=' 
+  fi
+  echo "$result" | tr '_-' '/+' | openssl enc -d -base64
+}
+
+function decode_jwt(){
+   decode_base64_url $(echo -n $2 | cut -d "." -f $1) | jq .
+}
+
+# Decode JWT header
+alias jwth="decode_jwt 1"
+
+# Decode JWT Payload
+alias jwtp="decode_jwt 2"

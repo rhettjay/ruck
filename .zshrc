@@ -23,7 +23,7 @@ autoload -U colors && colors
 autoload -Uz vcs_info
 
 # zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git:*' check-for-changes true
+# zstyle ':vcs_info:git:*' check-for-changes true
 ## Add git info to zle
 
 # %r = repo name
@@ -35,9 +35,9 @@ zstyle ':vcs_info:git:*' check-for-changes true
 # %m = misc replacement (git rebase/cherry-pick) controlled by patch-format/no-patch-format
 # %u = The string from the unstagedstr style if there are unstaged changes in the repository.
 # %c = number of unapplied patches
-zstyle ':vcs_info:git:*' action-formats "%r%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
+# zstyle ':vcs_info:git:*' action-formats "%r%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
 zstyle ':vcs_info:git:*' formats "%r%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
-zstyle ':vcs_info:git:*' patch-formats "%r%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
+# zstyle ':vcs_info:git:*' patch-formats "%r%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
 
 # +--------+
 # | prompt |
@@ -58,7 +58,7 @@ function randEL {
  declare -a array=("$@")
  r=$(($RANDOM % ${#array[@]}))
  printf "%s\n" "${array[$r]}"
- return r
+ #return "${array[$r]}"
 }
 
 
@@ -66,7 +66,7 @@ function getPromptOpts {
   TERM_ID="$(randEL 🚀 👻 👾 🦄 🐳 🐻 🦊 🐙 🦖 🦕 🐢 🐉 ⚡️ 🔱 🦑)"
   DISPLAY_DIR="$(dirs)"
   LOCAL_SECRETS=" "
-  DEFAULT_PROMPT="%u%~${vcs_info_msg_0_} ${TERM_ID}${LOCAL_SECRETS} "
+  PROMPT="%u%3~$vcs_info_msg_0_ ${TERM_ID%2%G} "
 }
 
 # function cd () {
@@ -74,45 +74,48 @@ function getPromptOpts {
 #   return 0
 # }
 
-function chpwd() {
-  # DISPLAY_DIR="$(git rev-parse --show-toplevel --sq --path-format=relative --quiet)"
-  # if [[ -z vcs_info ]]; then
-  # else
-  #   if [[ -s "./zsh_config" || -s "${DISPLAY_DIR}/.zsh_config" ]]; then
-  #     source "$DISPLAY_DIR/.zsh_config"
-  #     LOCAL_SECRETS="^"
-  #   fi
-  # fi
-}
 
 getPromptOpts
 
 precmd() {
     vcs_info
-
     if [[ -z $vcs_info_msg_0_ ]]; then
-      PROMPT="%3~ ${TERM_ID} "
+      PROMPT="%3~ ${TERM_ID%2G%} "
+    else
+      if [[ DEV_CLIENT != "" ]]; then
+        PROMPT="%F{white}%f $vcs_info_msg_0_ %F{yellow}%f %{$TERM_ID%2G%} "
+      else
+        PROMPT="%F{white}%f $vcs_info_msg_0_ %F{blue}%f %{$TERM_ID%2G%} "
+      fi
+    fi
+}
+
+function chpwd {
+do-local
+}
+
+function do-local {
+if [[ $(git $PWD rev-parse --is-inside-work-tree 2>/dev/null; echo $?) -ge 1 ]]; then
       export PRD_CLIENT="NOT SET"
       export PRD_SECRET="NOT SET"
       export DEV_CLIENT="NOT SET"
       export DEV_SECRET="NOT SET"
     else
-      DISPLAY_DIR="$(git rev-parse --show-toplevel --sq --path-format=relative --quiet)"
-      if [[ -s "./${DISPLAY_DIR}/.zsh_config" ]]; then
-        source "./$DISPLAY_DIR/.zsh_config"
+      DIR="$(git rev-parse --show-toplevel --sq --quiet $PWD)"
+      if [[ $DIR != "" ]]; then
+        source "$DIR/.zsh_config"
+      else
+        return 1
       fi
-      PROMPT="%B%F{white}%f%b ${vcs_info_msg_0_}🔥${TERM_ID%2%G} "
     fi
 }
-
-
 
 
 #+----------------+
 #| Zstyle options |
 #+----------------+
 
-## Ignore .lock files when using tab
+## Ignore .lock files wgedstr style if there are staged changes in the repository.hen using tab
 zstyle ':completion:*:*:vim:*:files' ignored-patterns '*.lock'
 ## Add groups with autotab
 zstyle ':completion:*' group-name ''

@@ -1,4 +1,9 @@
 #!/usr/bin/env zsh
+
+# XDG (Cross Desktop Group) Environment
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
+
 # +------------+
 # | zle options|
 # +------------+
@@ -6,7 +11,7 @@ HISTSIZE=5000
 HISTFILESIZE=10000
 SAVEHIST=5000
 setopt EXTENDED_HISTORY
-HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+HISTFILE=${XDG_CONFIG_HOME}/.zsh_history
 setopt SHARE_HISTORY
 setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
@@ -21,6 +26,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # autocomplete hidden files
 _comp_options+=(globdots)
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#946b2d,bold,underline"
 
 #+--------------+
 #| Path options |
@@ -36,9 +42,6 @@ export RUCKSACK="$HOME/rucksack"
 # unpack rucksack if not not built
 # [ -f "$RUCKSACK/unpack" ] && source "$RUCKSACK/unpack"
 
-# XDG (Cross Desktop Group) Environment
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
 
 # VIM Environment
 export VIM_CONFIG="$XDG_CONFIG_HOME/nvim"
@@ -48,19 +51,21 @@ export VISUAL="nvim"
 # GPG Key
 export GPG_TTY=\$(tty)
 
-# Rust Home
-export PATH="$PATH:$HOME/.cargo/bin"
+# Rust
 # Add .bin .cargo/bin /bin and wabt/build to bin
-PATH="$PATH:$HOME/.bin:$HOME/.cargo/bin:$HOME/bin:$HOME/sandbox/web-assembly-crt/wabt/build"
-source "$HOME/.cargo/env"
+export PATH="$PATH:$HOME/.bin:$HOME/.cargo/bin:$HOME/bin:$HOME/sandbox/web-assembly-crt/wabt/build:$HOME/.cargo/env"
 
 #WASM HOME
-export WASMTIME_HOME="$HOME/.wasmtime"
+export WASMTIME_HOME="$XDG_CONFIG_HOME/.wasmtime"
 export PATH="$WASMTIME_HOME/bin:$PATH"
 
 #VOLTA Setup
-export VOLTA_HOME="$HOME/.volta"
+export VOLTA_HOME="$XDG_CONFIG_HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+
+#RANCHER Desktop
+export PATH="/Users/rbulkley/.rd/bin:$PATH"
 
 #NVIM Setup (migrated to nvim)
 #export NVM_DIR="$HOME/.nvm"
