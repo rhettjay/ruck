@@ -131,7 +131,7 @@ function decode_base64_url() {
 }
 
 function decode_jwt(){
-   decode_base64_url $(echo -n $2 | cut -d "." -f $1) | jq .
+   decode_base64_url $(echo -n $2 | cut -d . -f $1) | jq .
 }
 
 # Decode JWT header
