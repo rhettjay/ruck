@@ -11,7 +11,7 @@ HISTSIZE=5000
 HISTFILESIZE=10000
 SAVEHIST=5000
 setopt EXTENDED_HISTORY
-HISTFILE=${XDG_CONFIG_HOME}/.zsh_history
+HISTFILE=~/.zsh_history
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
