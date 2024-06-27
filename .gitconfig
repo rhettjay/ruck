@@ -1,13 +1,14 @@
 [user]
-	name = jay-bulk
 	email = jay.bulk@tuta.io
+	name = Rhett Bulkley
+	signingkey = A9CAC1D14680E0D4
 [commit]
 	gpgsign = true
 [init]
 	defaultBranch = main
 [merge]
 	tool = nvim
-    conflictstyle = diff3
+	conflictstyle = diff3
 [mergetool "nvim"]
 	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [core]
