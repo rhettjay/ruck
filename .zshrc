@@ -37,7 +37,7 @@ setopt prompt_subst
 # %u = The string from the unstagedstr style if there are unstaged changes in the repository.
 # %c = number of unapplied patches
 # zstyle ':vcs_info:git:*' action-formats "%r%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
-zstyle ':vcs_info:git:*' formats "%r%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
+zstyle ':vcs_info:git:*' formats "%{$fg[cyan]%}[%r-%{$fg[red]%}%b%{$fg[cyan]%}]%{$reset_color%}%m%u%c%{$reset_color%}"
 # zstyle ':vcs_info:git:*' patch-formats "%r%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
 
 # +--------+
