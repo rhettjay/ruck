@@ -21,6 +21,7 @@ white="\033[97m"
 
 autoload -U colors && colors
 autoload -Uz vcs_info
+setopt prompt_subst
 
 # zstyle ':vcs_info:*' enable git
 # zstyle ':vcs_info:git:*' check-for-changes true
@@ -74,20 +75,21 @@ function getPromptOpts {
 #   return 0
 # }
 
+DEV_CLIENT="NOT SET"
 
 getPromptOpts
 
 precmd() {
     vcs_info
-    if [[ -z $vcs_info_msg_0_ ]]; then
-      PROMPT="%3~ ${TERM_ID%2G%} "
-    else
-      if [[ DEV_CLIENT != "" ]]; then
-        PROMPT="%F{white}%f $vcs_info_msg_0_ %F{yellow}%f %{$TERM_ID%2G%} "
+     if [[ -z $vcs_info_msg_0_ ]]; then
+       PROMPT="%3~ ${TERM_ID%2G%} "
+     elif [[ ! -z $vcs_info_msg_0_ ]]; then
+      if [[ $DEV_CLIENT != "NOT SET" ]]; then
+        PROMPT="%F{white}^%f%2d.$vcs_info_msg_0_ [%F{yellow}E%f] %{$TERM_ID%2G%} "
       else
-        PROMPT="%F{white}%f $vcs_info_msg_0_ %F{blue}%f %{$TERM_ID%2G%} "
+        PROMPT="%F{white}^%f%2d.$vcs_info_msg_0_ [%F{blue}e%f] %{$TERM_ID%2G%} "
       fi
-    fi
+     fi
 }
 
 function chpwd {

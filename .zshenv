@@ -19,7 +19,6 @@ setopt hist_verify            # show command with history expansion to user befo
 setopt SHARE_HISTORY
 setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
-setopt prompt_subst
 setopt AUTO_LIST
 
 
@@ -70,7 +69,7 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 #RANCHER Desktop
 export PATH="/Users/rbulkley/.rd/bin:$PATH"
 
-#NVIM Setup (migrated to nvim)
+#NVM Setup (migrated to volta)
 #export NVM_DIR="$HOME/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
