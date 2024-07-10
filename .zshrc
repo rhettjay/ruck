@@ -36,9 +36,9 @@ setopt prompt_subst
 # %m = misc replacement (git rebase/cherry-pick) controlled by patch-format/no-patch-format
 # %u = The string from the unstagedstr style if there are unstaged changes in the repository.
 # %c = number of unapplied patches
-# zstyle ':vcs_info:git:*' action-formats "%r%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
-zstyle ':vcs_info:git:*' formats "%{$fg[cyan]%}[%r-%{$fg[red]%}%b%{$fg[cyan]%}]%{$reset_color%}%m%u%c%{$reset_color%}"
-# zstyle ':vcs_info:git:*' patch-formats "%r%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
+zstyle ':vcs_info:git:*' action-formats "%S%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
+zstyle ':vcs_info:git:*' formats "%S%{$fg[cyan]%}[%r %{$fg[red]%}%b%{$fg[cyan]%}]%{$reset_color%}%m%u%c%{$reset_color%}"
+zstyle ':vcs_info:git:*' patch-formats "%S%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
 
 # +--------+
 # | prompt |
@@ -85,9 +85,9 @@ precmd() {
        PROMPT="%3~ ${TERM_ID%2G%} "
      elif [[ ! -z $vcs_info_msg_0_ ]]; then
       if [[ $DEV_CLIENT != "NOT SET" ]]; then
-        PROMPT="%F{white}^%f%2d.$vcs_info_msg_0_ [%F{yellow}E%f] %{$TERM_ID%2G%} "
+        PROMPT="$vcs_info_msg_0_ [%F{yellow}e%f] %{$TERM_ID%2G%} "
       else
-        PROMPT="%F{white}^%f%2d.$vcs_info_msg_0_ [%F{blue}e%f] %{$TERM_ID%2G%} "
+        PROMPT="$vcs_info_msg_0_ [%F{blue}L%f] %{$TERM_ID%2G%} "
       fi
      fi
 }
