@@ -36,9 +36,9 @@ setopt prompt_subst
 # %m = misc replacement (git rebase/cherry-pick) controlled by patch-format/no-patch-format
 # %u = The string from the unstagedstr style if there are unstaged changes in the repository.
 # %c = number of unapplied patches
-zstyle ':vcs_info:git:*' action-formats "%S%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
-zstyle ':vcs_info:git:*' formats "%S%{$fg[cyan]%}[%r %{$fg[red]%}%b%{$fg[cyan]%}]%{$reset_color%}%m%u%c%{$reset_color%}"
-zstyle ':vcs_info:git:*' patch-formats "%S%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}"
+zstyle ':vcs_info:git:*' action-formats "%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}%S"
+zstyle ':vcs_info:git:*' formats "%{$fg[cyan]%}[%r %{$fg[red]%}%b%{$fg[cyan]%}]%{$reset_color%}%m%u%c%{$reset_color%}%S"
+zstyle ':vcs_info:git:*' patch-formats "%{$fg[cyan]%}[%b]%{$reset_color%}%m%u%c%{$reset_color%}%S"
 
 # +--------+
 # | prompt |
@@ -63,11 +63,8 @@ function randEL {
 }
 
 
-function getPromptOpts {
+function setPromptID {
   TERM_ID="$(randEL 🚀 👻 👾 🦄 🐳 🐻 🦊 🐙 🦖 🦕 🐢 🐉 ⚡️ 🔱 🦑)"
-  DISPLAY_DIR="$(dirs)"
-  LOCAL_SECRETS=" "
-  PROMPT="%u%3~$vcs_info_msg_0_ ${TERM_ID%2%G} "
 }
 
 # function cd () {
@@ -75,33 +72,31 @@ function getPromptOpts {
 #   return 0
 # }
 
-DEV_CLIENT="NOT SET"
+dev_client="NOT SET"
 
-getPromptOpts
+setPromptID
 
 precmd() {
     vcs_info
      if [[ -z $vcs_info_msg_0_ ]]; then
        PROMPT="%3~ ${TERM_ID%2G%} "
      elif [[ ! -z $vcs_info_msg_0_ ]]; then
-      if [[ $DEV_CLIENT != "NOT SET" ]]; then
-        PROMPT="$vcs_info_msg_0_ [%F{yellow}e%f] %{$TERM_ID%2G%} "
+      if [[ $dev_client == "NOT SET" || -z $dev_gro ]]; then
+        PROMPT="$vcs_info_msg_0_ %F{yellow}e%f %{$TERM_ID%2G%} "
       else
-        PROMPT="$vcs_info_msg_0_ [%F{blue}L%f] %{$TERM_ID%2G%} "
+        PROMPT="$vcs_info_msg_0_ %F{blue}L%f %{$TERM_ID%2G%} "
       fi
      fi
 }
 
-function chpwd {
-do-local
+function calculateGitProjectHead {
+
 }
 
-function do-local {
-if [[ $(git $PWD rev-parse --is-inside-work-tree 2>/dev/null; echo $?) -ge 1 ]]; then
-      export PRD_CLIENT="NOT SET"
-      export PRD_SECRET="NOT SET"
-      export DEV_CLIENT="NOT SET"
-      export DEV_SECRET="NOT SET"
+function chpwd {
+  if [[ $(git $PWD rev-parse --is-inside-work-tree 2>/dev/null; echo $?) -ge 1 ]]; then
+      export dev_client="NOT SET"
+      export prd_client="NOT SET"
     else
       DIR="$(git rev-parse --show-toplevel --sq --quiet $PWD)"
       if [[ $DIR != "" ]]; then
@@ -109,7 +104,7 @@ if [[ $(git $PWD rev-parse --is-inside-work-tree 2>/dev/null; echo $?) -ge 1 ]];
       else
         return 1
       fi
-    fi
+  fi
 }
 
 
