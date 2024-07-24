@@ -1,7 +1,6 @@
-vim.g.mapleader = ","
+vim.g.mapleader = " "
 
 local opt = vim.opt
-
 vim.scriptencoding = "utf-8"
 opt.encoding = "utf-8"
 
@@ -15,6 +14,10 @@ opt.mouse = ""
 opt.title = true
 opt.autoindent = true
 opt.smartindent = true
+
+opt.wrap = true
+opt.lbr = true
+opt.showbreak = "_>> "
 
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])

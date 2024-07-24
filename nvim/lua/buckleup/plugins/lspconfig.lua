@@ -2,7 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"hrsh7th/cmp-nvm-lsp",
+		"hrsh7th/cmp-nvim-lsp",
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
@@ -54,15 +54,15 @@ return {
 
 			-- this runs on the update date which is currently set to 250 in ../../config/options.lua
 			vim.o.updatetime = 250
-			vim.diagnostic.config({ virtual_text = false, update_in_insert = true, signs = true })
+			vim.diagnostic.config({ virtual_text = true, update_in_insert = true, signs = true })
 			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 				buffer = opts.bufnr,
 				callback = function()
 					local options = {
-						focusable = false,
+						focusable = true,
 						border = "rounded",
 					}
-					vim.diagnostic.open_float(nil, options)
+					vim.diagnostic.open_float(opts.bufnr, options)
 				end,
 			})
 		end
@@ -113,6 +113,12 @@ return {
 					includeInlayVariableTypeHints = true,
 				},
 			},
+		})
+
+		-- configure yaml langauge server
+		lspconfig.yamlls.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
 		})
 
 		-- configure eslint server with plugin

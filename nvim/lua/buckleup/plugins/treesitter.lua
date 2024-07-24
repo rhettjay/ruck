@@ -1,8 +1,10 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
 		opts = {
 			ensure_installed = {
+				"c",
 				"cmake",
 				"cpp",
 				"css",
@@ -12,6 +14,7 @@ return {
 				"http",
 				"javascript",
 				"java",
+				"jsdoc",
 				"kotlin",
 				"lua",
 				"php",
@@ -20,6 +23,18 @@ return {
 				"sql",
 				"svelte",
 				"typescript",
+				"vimdoc",
+			},
+			sync_install = false,
+			auto_install = true,
+
+			indent = {
+				enable = true,
+			},
+
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = { "markdown" },
 			},
 		},
 		config = function(_, opts)
