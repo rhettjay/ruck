@@ -32,11 +32,10 @@ return {
 		vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
 		require("neo-tree").setup({
-			close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+			close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
 			popup_border_style = "rounded",
 			enable_git_status = true,
-			enable_diagnostics = true,
-			enable_normal_mode_for_inputs = false, -- Enable normal mode for input dialogs.
+			enable_diagnostics = false,
 			open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
 			sort_case_insensitive = false, -- used when sorting files and directories in the tree
 			sort_function = nil, -- use a custom function for sorting files and directories in the tree
@@ -54,18 +53,7 @@ return {
 					highlight = "NeoTreeIndentMarker",
 					-- expander config, needed for nesting files
 					with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
-					expander_collapsed = "",
-					expander_expanded = "",
 					expander_highlight = "NeoTreeExpander",
-				},
-				icon = {
-					folder_closed = "",
-					folder_open = "",
-					folder_empty = "󰜌",
-					-- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
-					-- then these will never be used.
-					default = "*",
-					highlight = "NeoTreeFileIcon",
 				},
 				modified = {
 					symbol = "[+]",
@@ -83,11 +71,7 @@ return {
 						modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
 						deleted = "✖", -- this can only be used in the git_status source
 						renamed = "󰁕", -- this can only be used in the git_status source Status type
-						untracked = "",
-						ignored = "",
-						unstaged = "󰄱",
-						staged = "",
-						conflict = "",
+						untracked = "-",
 					},
 				},
 				-- If you don't want to use these columns, you can set `enabled = false` for each of them individually
@@ -167,7 +151,7 @@ return {
 			nesting_rules = {},
 			filesystem = {
 				filtered_items = {
-					visible = false, -- when true, they will just be displayed differently than normal items
+					visible = true, -- when true, they will just be displayed differently than normal items
 					hide_dotfiles = true,
 					hide_gitignored = true,
 					hide_hidden = true, -- only works on Windows for hidden files/directories
@@ -182,7 +166,7 @@ return {
 						--".gitignored",
 					},
 					never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
-						--".DS_Store",
+						".DS_Store",
 						--"thumbs.db"
 					},
 					never_show_by_pattern = { -- uses glob style patterns
@@ -190,7 +174,7 @@ return {
 					},
 				},
 				follow_current_file = {
-					enabled = false, -- This will find and focus the file in the active buffer every time
+					enabled = true, -- This will find and focus the file in the active buffer every time
 					--               -- the current file is changed while the tree is open.
 					leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
 				},
@@ -202,6 +186,14 @@ return {
 				-- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
 				use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
 				-- instead of relying on nvim autocmd events.
+				event_handlers = {
+					event = "neo_tree_popup_input_ready",
+					---@param args { bufnr: integer, winid: integer }
+					handler = function(args)
+						vim.cmd("stopinsert")
+						vim.keymap.set("i", "<esc>", vim.cmd.stopinsert, { noremap = true, buffer = args.bufnr })
+					end,
+				},
 				window = {
 					mappings = {
 						["<bs>"] = "navigate_up",

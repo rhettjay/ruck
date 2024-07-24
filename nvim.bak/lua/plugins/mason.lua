@@ -10,7 +10,7 @@ return {
 		{ "j-hui/fidget.nvim", opts = {} }, -- useful status updates for LSP
 
 		-- Additional lua configuration, makes nvim stuff amazing!
-		"folke/neodev.nvim",
+		"folke/lazydev.nvim",
 	},
 	config = function()
 		local mason = require("mason")
@@ -24,16 +24,16 @@ return {
 				"svelte",
 				"html",
 				"lua_ls",
-				"rust-analyzer",
+				"rust_analyzer",
 				"terraformls",
 				"tsserver",
+				"yamlls",
 			},
 			formatting = {
 				disabled = {
 					"biome",
-					"rust-analyzer",
+					"rust_analyzer",
 					"tsserver",
-					"typescript-langauge-server",
 				},
 			},
 			automatic_installation = true,
