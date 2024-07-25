@@ -18,31 +18,33 @@ opt.smartindent = true
 opt.wrap = true
 opt.lbr = true
 opt.showbreak = "_>> "
+opt.tabstop = 2
+opt.softtabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
 
--- Undercurl
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
+-- numbers
+opt.nu = true
+opt.relativenumber = true
 
+-- Search/incremental search
 opt.hlsearch = false
 opt.incsearch = true
-vim.wo.nu = true
 
 -- Sync clipboard between OS and Neovim.
 opt.clipboard = "unnamedplus"
 
+opt.swapfile = false
+opt.backup = false
 -- Save undo history
--- opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
--- opt.undofile = true
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
 opt.ignorecase = true
 opt.smartcase = true
 
--- Keep signcolumn on by default
-vim.wo.signcolumn = "yes"
-
 -- Decrease update time
-opt.updatetime = 250
 opt.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
@@ -51,6 +53,7 @@ opt.termguicolors = true
 opt.scrolloff = 8
 opt.signcolumn = "yes"
 opt.colorcolumn = "80"
+opt.updatetime = 50
 
 if vim.g.neovide then
 	vim.g.neovide_cursor_tail_length = 0

@@ -2,6 +2,7 @@ return {
 	-- Autocompletion
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
+	enabled = false,
 	version = false,
 	dependencies = {
 		"hrsh7th/cmp-buffer", -- Source for text in buffer

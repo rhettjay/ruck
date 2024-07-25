@@ -1,5 +1,6 @@
 return {
 	"stevearc/conform.nvim",
+	enabled = false,
 	dependencies = {
 		"mason.nvim",
 	},

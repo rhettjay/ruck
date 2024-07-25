@@ -1,6 +1,4 @@
 return {
-	"MunifTanjim/nui.nvim",
-	"rcarriga/nvim-notify",
 	-- Git related plugins
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
@@ -26,13 +24,5 @@ return {
 		-- See `:help ibl`
 		main = "ibl",
 		opts = {},
-	},
-	{
-		"iamcco/markdown-preview.nvim",
-		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		ft = { "markdown" },
-		build = function()
-			vim.fn["mkdp#util#install"]()
-		end,
 	},
 }

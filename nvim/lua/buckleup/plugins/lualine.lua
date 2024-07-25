@@ -41,8 +41,8 @@ return {
             "overseer",
             "location",
           },
-          --lualine_y = { "overseer" },
-          --lualine_z = { "location" },
+          lualine_y = { "overseer" },
+          lualine_z = { "location" },
         },
       }
     end,
