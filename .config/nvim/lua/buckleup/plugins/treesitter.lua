@@ -8,7 +8,6 @@ return {
 				"cmake",
 				"cpp",
 				"css",
-				"gitignore",
 				"go",
 				"graphql",
 				"http",
