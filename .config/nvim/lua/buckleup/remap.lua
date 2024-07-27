@@ -61,3 +61,6 @@ keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
 -- Source
 keymap.set("n", "<leader><leader>", "<cmd>so<CR>")
+
+-- Goofing around
+keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
