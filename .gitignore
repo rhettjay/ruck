@@ -1,5 +1,6 @@
 #Ignore ENV
 *.env
+*-work.*
 .env/
 .DS_Store
 **/.DS_Store
