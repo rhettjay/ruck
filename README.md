@@ -11,7 +11,7 @@ Feel free to browse through and use pieces as you see fit.
 # Define an XDG_CONFIG_HOME
 export XDG_CONFIG_HOME=$HOME/dotfiles
 
-# Then copy everything over or source it in
+# Copy everything over or source it in
 source ~/$XDG_CONFIG_HOME/.zsh
 ```
 
