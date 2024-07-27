@@ -4,9 +4,9 @@ As defined here, it is a digital backpack; my opinionated setup for migrating to
 Feel free to browse through and use pieces as you see fit.
 
 # configs
-[Neovim Configuration](./.config/nvim)
-[Zsh Configuration](./.zshrc)
-[CLI Utilities](./Brewfile)
+- [Neovim Configuration](./.config/nvim)
+- [Zsh Configuration](./.zshrc)
+- [CLI Utilities](./Brewfile)
 
 # TODO
 - [ ] [Custom CLI Utilities --> scripts](./scripts) # Need to abstract them for more public consumption 
