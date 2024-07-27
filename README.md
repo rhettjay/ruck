@@ -4,12 +4,17 @@ Rucksack, as defined here, is a digital backpack.
 It's my opinionated setup for traveling and migrating to new lands of software without losing sane context.
 
 # Installation
-`git clone rucksack`
+`git clone https://github.com/rhettjay/ruck.git`
 
 # How to use it
-`ruck it`
-`ruck setup`
-`ruck update`
+```bash
+# Define an XDG_CONFIG_HOME
+export XDG_CONFIG_HOME=$HOME/dotfiles
 
-# Contributions
-I intend on keeping this private and inviting a select few individuals, if that changes we'll update this.
+# Then copy everything over or source it in
+source ~/$XDG_CONFIG_HOME/.zsh
+```
+
+# License
+&copy; Rhett Bulkley
+Released under the GNU General Public License, version 3 or later.
