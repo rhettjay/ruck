@@ -1,7 +1,14 @@
 #Ignore ENV
+.vim/
+.viminfo
 *.env
+*-work.*
 .env/
 .DS_Store
 **/.DS_Store
 .zprofile
 bat/theme
+.zsh_config
+*-session
+*State*
+com.googlecode.iterm2.plist
