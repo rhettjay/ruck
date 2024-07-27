@@ -1,4 +1,6 @@
 #Ignore ENV
+.vim/
+.viminfo
 *.env
 *-work.*
 .env/
@@ -7,3 +9,6 @@
 .zprofile
 bat/theme
 .zsh_config
+*-session
+*State*
+com.googlecode.iterm2.plist
