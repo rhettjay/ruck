@@ -49,6 +49,7 @@ export PATH="/Library/Frameworks/Python.framework/Versions/3.11/bin:${PATH}"
 
 # VIM Environment
 export VIMRUNTIME="$HOMEBREW_PREFIX/share/nvim/runtime"
+export VIM="$HOMEBREW_PREFIX/share/nvim/runtime"
 export VIM_CONFIG="$XDG_CONFIG_HOME/nvim"
 export EDITOR="nvim"
 export VISUAL="nvim"
