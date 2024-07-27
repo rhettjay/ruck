@@ -1,7 +1,7 @@
 # Rucksack
-I spent considerable time in Deutschland 🇩 and you can't survive traveling around without a backpack.
 Rucksack, as defined here, is a digital backpack.
 It's my opinionated setup for traveling and migrating to new lands of software without losing sane context.
+Feel free to browse through and use pieces as you see fit.
 
 # Installation
 `git clone https://github.com/rhettjay/ruck.git`
