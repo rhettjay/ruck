@@ -31,7 +31,8 @@ source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 # autocomplete hidden files
 _comp_options+=(globdots)
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#946b2d,bold,underline"
-
+# Fast stntax highlightjng
+source "$HOMEBREW_PREFIX/share/fast-syntax-highlighting"
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
