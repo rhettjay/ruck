@@ -30,7 +30,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 # autocomplete hidden files
 _comp_options+=(globdots)
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#946b2d,bold,underline"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#69cfd2,bold,underline"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
@@ -53,6 +53,9 @@ export VIM_CONFIG="$XDG_CONFIG_HOME/nvim"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
+# Man pager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
 # GPG Key
 export GPG_TTY=\$(tty)
 
@@ -73,10 +76,9 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="/Users/rbulkley/.rd/bin:$PATH"
 
 # NVM Setup (migrated to volta)
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# most important functions
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion most important functions
 
 #+------------------+
 #| JQ Color options |
