@@ -1,0 +1,3 @@
+[submodule ".config/.config/bat/themes/batsaka"]
+	path = .config/.config/bat/themes/batsaka
+	url = https://github.com/rhettjay/batsaka
