@@ -10,7 +10,7 @@ return {
 		"hrsh7th/nvim-cmp",
 		"j-hui/fidget.nvim", -- LSP loading notification
 		"L3MON4D3/LuaSnip", -- Snippet engine
-		"saadparwaiz1/cmp-luasnip", -- Autocomplete engine
+		"saadparwaiz1/cmp_luasnip", -- Autocomplete engine
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"rafamadriz/friendly-snippets", -- vscode / other snippets
@@ -19,13 +19,15 @@ return {
 		local cmp = require("cmp")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local luasnip = require("luasnip")
+
+    require("cmp_luasnip")
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		local capabilities = vim.tbl_deep_extend(
 			"force",
 			{},
 			vim.lsp.protocol.make_client_capabilities(),
-			cmp_lsp.default_capabilities()
+			cmp_nvim_lsp.default_capabilities()
 		)
 
 		require("fidget").setup({})
@@ -55,7 +57,7 @@ return {
 				    root_dir = function(...)
 					return require("lspconfig.util").root_pattern(".git")(...)
 				    end,
-				    
+
 				})
 			    end,
 			    ["lua_ls"] = function()

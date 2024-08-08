@@ -14,11 +14,12 @@ return {
 						"zurlenv",
 						".zsh_config",
 						".dev.vars",
+            ".curlrc",
 					},
 					-- Match an equals sign and any character after it.
 					-- This can also be a table of patterns to cloak,
 					-- example: cloak_pattern = { ":.+", "-.+" } for yaml files.
-					cloak_pattern = "=.+",
+					cloak_pattern = { '^grant.*=(.+)', ':.+' },
 				},
 			},
 		})
