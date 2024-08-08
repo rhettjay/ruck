@@ -32,7 +32,7 @@ source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 _comp_options+=(globdots)
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#69cfd2,bold,underline"
 # Fast stntax highlightjng
-source "$HOMEBREW_PREFIX/share/fast-syntax-highlighting"
+source ~/buckleup/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
