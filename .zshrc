@@ -1,5 +1,5 @@
-ZSH_DIR=~/.zsh
+ZDOTDIR=~/.zsh
 
-source "$ZSH_DIR/opt.zsh"
-source "$ZSH_DIR/env.zsh"
-source "$ZSH_DIR/aliases.zsh"
+source "$ZDOTDIR/opt.zsh"
+source "$ZDOTDIR/env.zsh"
+source "$ZDOTDIR/aliases.zsh"
