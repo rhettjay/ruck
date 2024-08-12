@@ -23,8 +23,8 @@ setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt auto_list
 
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# WARNING: .gitignore-next-line DO NOT COMMIT THIS LINE
+eval "$(/usr/local/Homebrew/bin/brew shellenv)"
 
 # Autosuggestions in terminal
 source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
@@ -60,6 +60,9 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # GPG Key
 export GPG_TTY=\$(tty)
 
+# Wezterm
+export WEZTERM_CONFIG_FILE='~/.config/wezterm/wezterm.lua'
+
 # Rust
 # Add .bin .cargo/bin /bin and wabt/build to bin
 export PATH="$PATH:$HOME/.bin:$HOME/.cargo/bin:$HOME/bin:$HOME/sandbox/web-assembly-crt/wabt/build:$HOME/.cargo/env"
@@ -69,7 +72,7 @@ export WASMTIME_HOME="$XDG_CONFIG_HOME/.wasmtime"
 export PATH="$WASMTIME_HOME/bin:$PATH"
 
 # VOLTA Setup
-export VOLTA_HOME="$XDG_CONFIG_HOME/.volta"
+export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 
