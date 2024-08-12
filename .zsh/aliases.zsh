@@ -16,6 +16,7 @@ alias switch="git switch";
 alias glone="gh repo clone";
 alias diff='delta'
 alias graph="git log --graph --pretty='%C(bold blue) Hash: %h %C(cyan)(%ar) %C(red) %s'";
+alias gcsm="git commit -S -m"
 
 #** cd to the project root and graph the git tree
 function groot { 
