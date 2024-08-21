@@ -17,6 +17,11 @@ config.keys = {
 		action = act.SplitHorizontal({ domain = "DefaultDomain" }),
 	},
 	{
+		key = "g",
+		mods = "CMD",
+		action = act.SplitVertical({ domain = "DefaultDomain" }),
+	},
+	{
 		key = "]",
 		mods = "CMD",
 		action = act.ActivatePaneDirection("Next"),
