@@ -16,6 +16,9 @@ keymap.set("n", "-", "<C-x>")
 -- Delete a word backwards
 keymap.set("n", "dw", '"vb"_d')
 
+-- Reverse selection
+keymap.set({"n", "v"}, "<leader>lr", function(opts) string.reverse(opts.args) end)
+
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
