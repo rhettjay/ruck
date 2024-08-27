@@ -26,9 +26,7 @@ keymap.set("n", "<C-m>", "<C-i>", opts)
 keymap.set("n", "sss", ":split<Return>", opts)
 keymap.set("n", "ssv", ":vsplit<Return>", opts)
 
--- File browser
-keymap.set("n", "<leader>ex", ":Neotree<CR>")
-
+-- Not sure
 keymap.set("n", "sh", "<C-w>h")
 keymap.set("n", "sk", "<C-w>k")
 keymap.set("n", "sj", "<C-w>j")
