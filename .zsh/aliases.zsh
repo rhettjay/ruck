@@ -17,14 +17,16 @@ alias glone="gh repo clone";
 alias diff='delta'
 alias graph="git log --graph --pretty='%C(bold blue) Hash: %h %C(cyan)(%ar) %C(red) %s'";
 alias gcsm="git commit -S -m"
-alias gcsma="git add $1 && git commit -S -m $2"
+function gcsma() {
+    git add $1 && git commit -S -m $2
+}
 
 #** cd to the project root and graph the git tree
-function groot { 
-  if git remote -v; 
+function groot {
+  if git remote -v;
     ROOT_DIR=`git rev-parse --show-top-level`
-  then 
-    cd $ROOT_DIR && git log --graph --pretty="%C(bold blue) Hash: %h %C(cyan)(%ar) %C(red) %s"; 
+  then
+    cd $ROOT_DIR && git log --graph --pretty="%C(bold blue) Hash: %h %C(cyan)(%ar) %C(red) %s";
   else
     # not a git repo
     return 1
@@ -84,12 +86,12 @@ alias ruck="rm -irf ~/.config/ cp ~/rucksack/.config ~/.config"
 
 
 # All the important functions (print them to term and copy them)
-d() { 
+d() {
   EYES=" ಠ_ಠ "
   printf "%s" $EYES | tee /dev/tty | pbcopy && printf "\n";
 }
 
-f() { 
+f() {
   TABLE="（╯°□°）╯ ┻━┻"
   printf "%s" $TABLE | tee /dev/tty | pbcopy && printf "\n";
 }
@@ -128,7 +130,7 @@ function decode_base64_url() {
   local len=$((${#1} % 4))
   local result="$1"
   if [ $len -eq 2 ]; then result="$1"'=='
-  elif [ $len -eq 3 ]; then result="$1"'=' 
+  elif [ $len -eq 3 ]; then result="$1"'='
   fi
   echo "$result" | tr '_-' '/+' | openssl enc -d -base64
 }
