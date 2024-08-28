@@ -23,15 +23,18 @@ setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt auto_list
 
-# Check if arch is intel then set homebrew prefix accordingly
-if [[ $arch  =~ "x*" ]]; then
-    HOMEBREW_PREFIX=/usr/local
-    else
-    HOMEBREW_PREFIX=/opt/homebrew
-    eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
-    # Autosuggestions in terminal
-    source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-fi
+# Check arch then set homebrew prefix accordingly
+case "$(uname -m)" in
+    x*)
+        HOMEBREW_PREFIX=/usr/local
+        ;;
+    arm*)
+        HOMEBREW_PREFIX=/opt/homebrew
+        ;;
+esac
+eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+# Autosuggestions in terminal
+source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # autocomplete hidden files
 _comp_options+=(globdots)
