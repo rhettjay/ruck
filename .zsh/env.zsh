@@ -23,12 +23,16 @@ setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt auto_list
 
-# [WARNING!]: Update to match your brew install
-HOMEBREW_PREFIX=/opt/homebrew
-eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+# Check if arch is intel then set homebrew prefix accordingly
+if [[ $arch  =~ "x*" ]]; then
+    HOMEBREW_PREFIX=/usr/local
+    else
+    HOMEBREW_PREFIX=/opt/homebrew
+    eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+    # Autosuggestions in terminal
+    source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+fi
 
-# Autosuggestions in terminal
-source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 # autocomplete hidden files
 _comp_options+=(globdots)
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#69cfd2,bold,underline"
