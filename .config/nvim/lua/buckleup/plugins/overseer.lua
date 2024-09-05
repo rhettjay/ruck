@@ -1,4 +1,5 @@
 return {
   -- run builds etc from within the buffer
-	"stevearc/overseer.nvim"
+	"stevearc/overseer.nvim",
+  --require("overseer").setup()
 }
