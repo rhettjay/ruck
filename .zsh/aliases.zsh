@@ -61,7 +61,7 @@ alias tapply="terraform plan -apply";
 alias ld="eza -lD";
 alias lf="eza -lF --color=always | grep -v /";
 alias lh="eza -dl .* --group-directories-first";
-alias ls="eza -a --group-directories-first";
+alias ls="eza -a --group-directories-first -1 --icons=always --hyperlink --sort=time";
 alias l="ls";
 alias ll="eza -alF --color=always --sort=size";
 alias lt="eza -al --sort=modified -F -T";
