@@ -83,6 +83,8 @@ export PATH="$WASMTIME_HOME/bin:$PATH"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
+# Wezterm
+export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 
 # RANCHER Desktop
 export PATH="/Users/rbulkley/.rd/bin:$PATH"
