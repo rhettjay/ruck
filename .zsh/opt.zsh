@@ -82,9 +82,9 @@ precmd() {
        PROMPT="%3~ ${TERM_ID%2G%} "
      elif [[ ! -z $vcs_info_msg_0_ ]]; then
       if [[ $dev_client == "NOT SET" || -z $dev_gro ]]; then
-        PROMPT="$vcs_info_msg_0_ %F{yellow}e%f %{$TERM_ID%2G%} "
+        PROMPT="$vcs_info_msg_0_ %{$TERM_ID%2G%} "
       else
-        PROMPT="$vcs_info_msg_0_ %F{blue}L%f %{$TERM_ID%2G%} "
+        PROMPT="$vcs_info_msg_0_ %{$TERM_ID%2G%} "
       fi
      fi
 }
