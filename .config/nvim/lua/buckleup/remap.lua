@@ -17,7 +17,7 @@ keymap.set("n", "-", "<C-x>")
 keymap.set("n", "dw", '"vb"_d')
 
 -- Reverse selection
-keymap.set({"n", "v"}, "<leader>lr", function(opts) string.reverse(opts.args) end)
+keymap.set({"n", "v"}, "<leader>lr", function(opts) return string.reverse(opts.args) end)
 
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
