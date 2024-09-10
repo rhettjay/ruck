@@ -3,7 +3,7 @@ local act = wezterm.action
 local gui = wezterm.gui
 local config = {}
 
-config.window_background_image = "~/buckleup/errors.jpg"
+gui.window_background_image = "~/buckleup/errors.jpg"
 config.window_background_opacity = 0.95
 config.color_scheme = 'Builtin Solarized Dark'
 config.hide_tab_bar_if_only_one_tab = true

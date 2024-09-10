@@ -28,7 +28,8 @@ ln -s ~/$XDG_CONFIG_HOME/ ./ruck
 PRs welcome
 
 ### TODO
-- [ ] [Custom CLI Utilities --> scripts](./scripts) # Need to abstract them for more public consumption 
+- [ ] Add nix configuration
+- [ ] [Custom CLI Utilities --> scripts](./scripts) # Need to abstract them for more public consumption
 - [ ] Fix install utilities (using GNU stow or another similar utility). Right now I'm just setting up symlinks (`ln -s ./ruck .config/thing`)
 - [ ] Fix bat config colorscheme
 - [ ] Fix Neovim number column highlighting# Installation
