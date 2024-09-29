@@ -43,6 +43,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#69cfd2,bold,underline"
 source ~/buckleup/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+#source <(kubectl completion zsh)
 
 #+--------------+
 #| Path options |
@@ -100,3 +101,7 @@ export NVM_DIR="$HOME/.nvm"
 #
 # Color Pattern: "null:false:true:numbers:strings:arrays:objects:object keys" [0;31:...]
 export JQ_COLORS="0;90:0;39:0;39:0;39:0;32:1;39:1;39:1;36"
+
+# Mob timer config
+export MOB_TIMER_ROOM=OddIntrovertedTechnologists-84602
+

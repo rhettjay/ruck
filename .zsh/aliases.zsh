@@ -21,6 +21,30 @@ function gcsma() {
     git add $1 && git commit -S -m $2
 }
 
+## ! first run of this caused term pane to crash
+# function gh() {
+#   GH_ORG=""
+#   if [[ $1 == "init" ]]
+#   then
+#     shift 1; command gh repo create "$@"
+#     exit 0
+#   else
+#     shift 1; command gh "$@"
+#     exit 0
+#   fi
+# }
+# function gh() {
+#   GH_ORG=""
+#   while getops ":init*:" opt
+#   do
+#   case $opt in
+#     "init-oit" ) shift $((OPTIND -2)); GH_ORG="$OPTARG" "$@" | more ;;
+#     "init-rhettjay" ) shift $((OPTIND -2)); command gh create repo "rhettjay/$OPTARG" "$@"| more ;;
+#     "init-trn" ) shift $((OPTIND -2)); command gh create repo "byu-oit-training/$OPTARG" "$@"| more ;;
+#     * ) command gh "$@" ;;
+#   esac
+# }
+
 #** cd to the project root and graph the git tree
 function groot {
   if git remote -v;
@@ -76,6 +100,8 @@ alias dev="cd ~/dev"
 # vim alias
 alias ,="nvim"
 alias vim="nvim"
+alias rriimm="nvim ~/ruck/."
+alias vviimm="nvim ~/ruck/.config/nvim"
 alias vi="nvim"
 alias vz="vi ~/.zshrc"
 alias sz=". ~/.zshrc"
@@ -84,6 +110,8 @@ alias cpz="rm -i ~/rucksack/.zshrc cp ~/.zshrc rucksack/"
 alias sack="rm -irf ~/rucksack cp ~/.zshrc rucksack/"
 alias ruck="rm -irf ~/.config/ cp ~/rucksack/.config ~/.config"
 
+# Docker / Podman
+alias pod="podman"
 
 # All the important functions (print them to term and copy them)
 d() {
