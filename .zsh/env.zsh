@@ -43,7 +43,10 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#69cfd2,bold,underline"
 source ~/buckleup/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-#source <(kubectl completion zsh)
+
+#kubectl autocomplete
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+
 
 #+--------------+
 #| Path options |
@@ -52,6 +55,11 @@ source <(fzf --zsh)
 # Python 3.11
 # The original version is saved in .zprofile.pysave
 export PATH="/Library/Frameworks/Python.framework/Versions/3.11/bin:${PATH}"
+
+# Go path
+export GOPATH="/Users/rbulkley/go"
+export GOBIN="/Users/rbulkley/go/bin"
+export PATH="${GOBIN}:${PATH}"
 
 # unpack rucksack if not not built
 # [ -z stow "$RUCK" ]
