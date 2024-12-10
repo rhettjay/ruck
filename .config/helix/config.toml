@@ -1,0 +1,16 @@
+theme = "onedark"
+[editor]
+line-number = "relative"
+mouse = false
+gutters = [ "diff", "diagnostics", "line-numbers" ]
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 25 # increase value to reduce forced mid-word wrapping
+max-indent-retain = 0
+wrap-indicator = "<<_"  # set wrap-indicator to "" to hide it
