@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
 # ~/.macos — https://mths.be/macos
-#  Modified by Rhett Bulkley 
+# Modified by Rhett Bulkley
 # Run without downloading:
-# curl https://raw.githubusercontent.com/kentcdodds/dotfiles/master/.macos | bash
+# curl https://raw.githubusercontent.com/rhettjay/rhettjay/main/.macos | bash
 
-# Close any open System Preferences panes, to prevent them from overriding
-# settings we’re about to change
+# Prevent unintended overrides to system preference changes
 osascript -e 'tell application "System Preferences" to quit'
 
 # Ask for the administrator password upfront
@@ -36,41 +35,31 @@ echo "brew installing stuff"
 # delta: A fantastic diff tool
 # switchaudio-osx: allows me to switch the audio device via the command line
 # pgcli: postgres CLI
-brew install git hub ripgrep tree bat delta 
-
-echo "installing node (via n-install)"
-curl -L https://git.io/n-install | bash
-
-echo "node --version: $(node --version)"
-echo "npm --version: $(npm --version)"
-
-echo "installing a few global npm packages"
-npm install --global npm-quick-run npm-check-updates
-
-echo "installing apps with brew --cask"
-brew install --cask brave-browser 1password gh 
+brew install git hub ripgrep tree bat delta
 
 echo "Generating an RSA token for GitHub"
 mkdir -p ~/.ssh
 touch ~/.ssh/config
-ssh-keygen -t rsa -b 4096 -C "me+github@jay-bulk.git"
+ssh-keygen -t rsa -b 4096 -C "me+github@rhettjay.git"
 echo "Host *\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_rsa" | tee ~/.ssh/config
 eval "$(ssh-agent -s)"
 echo "run 'pbcopy < ~/.ssh/id_rsa.pub' and paste that into GitHub"
 
-echo "cloning dotfiles"
-git clone git@github.com:jay-bulk/dotfiles.git "${HOME}/dotfiles"
-ln -s "${HOME}/.configs/.zshrc" "${HOME}/.zshrc"
-ln -s "${HOME}/.configs/.gitignore_global" "${HOME}/.gitignore_global"
-ln -s "${HOME}/.configs/.gitconfig" "${HOME}/.gitconfig"
-ln -s "${HOME}/.configs/.my_bin" "${HOME}/.my_bin"
-ln -s "${HOME}/.configs/.vimrc" "${HOME}/.vimrc"
-ln -s "${HOME}/.configs/.vimrc-parts" "${HOME}/.vimrc-parts"
-ln -s "${HOME}/.configs/.ripgreprc" "${HOME}/.ripgreprc"
+echo "cloning ruck"
+git clone git@github.com:rhettjay/ruck.git "${HOME}/ruck"
+ln -s "${HOME}/ruck/.zshrc" "${HOME}/.zshrc"
+ln -s "${HOME}/ruck/.zsh" "${HOME}/.zsh"
+ln -s "${HOME}/ruck/.gitignore_global" "${HOME}/.gitignore_global"
+ln -s "${HOME}/ruck/.gitignore" "${HOME}/.gitignore_global"
+ln -s "${HOME}/ruck/.gitconfig" "${HOME}/.gitconfig"
+ln -s "${HOME}/ruck/.zs" "${HOME}/bin"
+ln -s "${HOME}/ruck/.config/.vimrc" "${HOME}/.vimrc"
+ln -s "${HOME}/ruck/.config/.vimrc-parts" "${HOME}/.vimrc-parts"
+ln -s "${HOME}/ruck/.config/.ripgreprc" "${HOME}/.ripgreprc"
 
 # get bat and delta all configured
 mkdir -p "${HOME}/.config/bat/themes"
-ln -s "${HOME}/dotfiles/.config/bat/config" "${HOME}/.config/bat/config"
+ln -s "${HOME}/ruck/.config/bat/config" "${HOME}/.config/bat/config"
 git clone https://github.com/batpigandme/night-owlish "${HOME}/.config/bat/themes/night-owlish"
 bat cache --build
 
@@ -144,11 +133,6 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
 # Set Help Viewer windows to non-floating mode
 # defaults write com.apple.helpviewer DevMode -bool true
-
-# Fix for the ancient UTF-8 bug in QuickLook (https://mths.be/bbo)
-# Commented out, as this is known to cause problems in various Adobe apps :(
-# See https://github.com/mathiasbynens/dotfiles/issues/237
-# echo "0x08000100:0" > ~/.CFUserTextEncoding
 
 # Reveal IP address, hostname, OS version, etc. when clicking the clock
 # in the login window
