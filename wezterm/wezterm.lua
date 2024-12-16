@@ -5,7 +5,8 @@ local config = {}
 
 gui.window_background_image = "~/buckleup/errors.jpg"
 config.window_background_opacity = 0.95
-config.color_scheme = 'Builtin Solarized Dark'
+-- config.color_scheme = 'Builtin Solarized Dark'
+config.color_scheme = 'Gruvbox Dark (Gogh)'
 config.hide_tab_bar_if_only_one_tab = true
 
 config.window_frame = {
