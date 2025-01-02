@@ -65,3 +65,6 @@ keymap.set("n", "<leader><leader>", "<cmd>so<CR>")
 
 -- Goofing around
 keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
+
+-- switch case
+keymap.set("n", "<leader>&", "<cmd> require('cmd').switch_case()<CR>")
