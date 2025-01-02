@@ -44,9 +44,8 @@ source ~/buckleup/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plug
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-#kubectl autocomplete
-[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
-
+# kubectl autocomplete
+source <(kubectl completion zsh)
 
 #+--------------+
 #| Path options |
@@ -94,9 +93,6 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 
 # Wezterm
 export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
-
-# RANCHER Desktop
-export PATH="/Users/rbulkley/.rd/bin:$PATH"
 
 # NVM Setup (migrated to volta)
 export NVM_DIR="$HOME/.nvm"
