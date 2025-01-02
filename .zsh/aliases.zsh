@@ -3,23 +3,20 @@ function gcommit { git commit -m "$@"; }
 ## add explicity alias so I can search it with alias
 function gclean () { git branch -d $(git branch --merged=master | grep -v master); git fetch prune; }
 alias gc="gcommit";
-
-alias gs="git status";
-alias gp="git pull";
-alias gup="git push -u origin ${vcs_info_msg_0_}";
-alias gf="git fetch";
-alias gpush="git push";
-alias updates="git diff -- . ':(exclude)*-lock.json'";
-alias changes="git diff --stat -- .";
-alias ga="git add .";
-alias switch="git switch";
-alias glone="gh repo clone";
-alias diff='delta'
-alias graph="git log --graph --pretty='%C(bold blue) Hash: %h %C(cyan)(%ar) %C(red) %s'";
 alias gcsm="git commit -S -m"
 function gcsma() {
     git add $1 && git commit -S -m $2
 }
+alias gs="git status";
+alias gitup="git push -u origin ${vcs_info_msg_0_}";
+alias gitul="git pull"
+alias gitf="git fetch";
+alias updates="git diff -- . ':(exclude)*-lock.json'";
+alias changes="git diff --stat -- .";
+alias switch="git switch";
+alias glone="gh repo clone";
+alias diff='delta'
+alias graph="git log --graph --pretty='%C(bold blue) Hash: %h %C(cyan)(%ar) %C(red) %s'";
 
 ## ! first run of this caused term pane to crash
 # function gh() {
@@ -174,3 +171,4 @@ alias jwth="decode_jwt 1"
 
 # Decode JWT Payload
 alias jwtp="decode_jwt 2"
+alias k="kubectl"
