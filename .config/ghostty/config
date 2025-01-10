@@ -1,1 +1,5 @@
 theme = GruvboxDark
+
+keybind = super+i=new_split:right
+keybind = super+]=goto_split:next
+keybind = super+[=goto_split:last
