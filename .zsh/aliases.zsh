@@ -17,6 +17,8 @@ alias switch="git switch";
 alias glone="gh repo clone";
 alias diff='delta'
 alias graph="git log --graph --pretty='%C(bold blue) Hash: %h %C(cyan)(%ar) %C(red) %s'";
+alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
 ## ! first run of this caused term pane to crash
 # function gh() {

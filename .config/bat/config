@@ -25,4 +25,5 @@
 --plain
 --map-syntax ".ignore:Git Ignore"
 --map-syntax "*.js:JavaScript (Babel)"
---theme="Catppuccin Mocha"
+--map-syntax "*.go:Golang"
+--theme="gruvbox-dark"

@@ -71,7 +71,7 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 # Man pager
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat -l man'"
 
 # GPG Key
 export GPG_TTY=\$(tty)
