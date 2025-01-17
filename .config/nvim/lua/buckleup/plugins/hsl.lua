@@ -1,5 +1,5 @@
 return {
-  "hsl", 
+  "hsl",
   dir = "../../custom",
   config = function() end
 }
