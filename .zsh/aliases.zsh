@@ -14,6 +14,10 @@ alias gitf="git fetch";
 alias updates="git diff -- . ':(exclude)*-lock.json'";
 alias changes="git diff --stat -- .";
 alias switch="git switch";
+alias jlone="jj git clone https://github.com/$1";
+# Keeping glone around in case I have a hard time adapting to the new pattern.
+# This way if I ever migrate all the way to jj then clone will not need a mental remap.
+alias clone="gh repo clone";
 alias glone="gh repo clone";
 alias diff='delta'
 alias graph="git log --graph --pretty='%C(bold blue) Hash: %h %C(cyan)(%ar) %C(red) %s'";
