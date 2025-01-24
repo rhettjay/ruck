@@ -64,7 +64,7 @@ function randEL {
 
 
 function setPromptID {
-  TERM_ID="$(randEL 🚀 👻 👾 🦄 🐳 🐻 🦊 🐙 🦖 🦕 🐢 🐉 ⚡️ 🔱 🦑)"
+  TERM_ID="$(randEL 🚀 👻 👾 🦄 🐳 🐻 🦊 🐙 🦖 ⚡️)"
 }
 
 # function cd () {
