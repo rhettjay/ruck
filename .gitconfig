@@ -31,19 +31,21 @@
 [color]
 	ui = true
 [alias]
-    farse = force --force-with-lease
-    co = checkout
-    branch = switch
-    br = switch
-    ct = commit
-    st = status
-    sta = status
-    stat = status
-    rev-pasre = rev-parse
-    rev-pares = rev-parse
-    rev-prase = rev-parse
-    rt = rev-parse --top-level
-    fault = blame -w -C -C -C -L
+  farse = force --force-with-lease
+  co = checkout
+  branch = switch
+  br = switch
+  ct = commit
+  st = status
+  sta = status
+  stat = status
+  rev-pasre = rev-parse
+  rev-pares = rev-parse
+  rev-prase = rev-parse
+  rt = rev-parse --top-level
+  fault = blame -w -C -C -C -L
+  swc = switch -c
+  swi = switch
 [diff]
     colorMoved = default
 [includeIf "gitdir:~/work/"]
