@@ -1,5 +1,6 @@
 theme = GruvboxDark
+font-family = "Hack Nerd Font Mono"
 
 keybind = super+i=new_split:right
 keybind = super+right_bracket=goto_split:next
-keybind = super+left_bracket=goto_split:last
+keybind = super+left_bracket=goto_split:previous
