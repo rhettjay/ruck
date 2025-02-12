@@ -24,6 +24,7 @@ alias diff='delta'
 alias graph="git log --graph --pretty='%C(bold blue) Hash: %h %C(cyan)(%ar) %C(red) %s'";
 alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+alias sed="gsed";
 
 ## ! first run of this caused term pane to crash
 # function gh() {
@@ -118,6 +119,7 @@ alias ruck="rm -irf ~/.config/ cp ~/rucksack/.config ~/.config"
 
 # Docker / Podman
 alias pod="podman"
+alias docker-start="open -a docker && while ! docker info > /dev/null 2>&1; do sleep 1; done"
 
 # All the important functions (print them to term and copy them)
 d() {
