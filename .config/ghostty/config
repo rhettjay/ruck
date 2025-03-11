@@ -1,10 +1,23 @@
 theme = GruvboxDark
-font-family = "Hack Nerd Font Mono"
+font-family = Hack Nerd Font Mono
 
 keybind = super+i=new_split:right
+keybind = super+d=new_split:down
 keybind = super+right_bracket=goto_split:next
 keybind = super+left_bracket=goto_split:previous
 keybind = super+shift+i>+=resize_split:right,10
 keybind = super+shift+i>-=resize_split:left,10
+keybind = super+shift+d>+=resize_split:up,10
+keybind = super+shift+d>-=resize_split:down,10
 keybind = super+shift+i>.=equalize_splits
 keybind = super+alt+i=inspector:toggle
+split-divider-color = #EE3B3B
+unfocused-split-opacity = 0.30
+
+
+# wait-after-command = true
+# macos-icon = custom-style
+# macos-icon-frame = aluminum
+# macos-icon-screen-color = #DEB887
+# macos-icon-ghost-color = #FFD787
+macos-titlebar-style = native
