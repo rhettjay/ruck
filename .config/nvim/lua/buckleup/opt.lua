@@ -53,5 +53,5 @@ opt.completeopt = "menuone,noselect"
 opt.termguicolors = true
 opt.scrolloff = 8
 opt.signcolumn = "yes"
-opt.colorcolumn = "80"
+-- opt.colorcolumn = "80"
 opt.updatetime = 50
