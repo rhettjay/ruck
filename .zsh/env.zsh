@@ -26,13 +26,25 @@ setopt auto_list
 # Check arch then set homebrew prefix accordingly
 case "$(uname -m)" in
     x*)
+        if ($TERM == xterm-256color) {
+          HOMEBREW_PREFIX=/opt/homebrew
+	  break;
+        }
         HOMEBREW_PREFIX=/usr/local
         ;;
     arm*)
         HOMEBREW_PREFIX=/opt/homebrew
         ;;
 esac
+
 eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+
+# # Try starship
+# eval "$(starship init zsh)"
+
+# Tried oh-my-posh (it was pretty slow)
+eval "$(oh-my-posh init zsh --config ~/.zsh/oh-my-posh.omp.json)"
+
 # Autosuggestions in terminal
 source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
@@ -98,6 +110,9 @@ export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion most important functions
+
+# TFSWITCH (terraform version manager)
+export TF_PRODUCT=opentofu
 
 #+------------------+
 #| JQ Color options |

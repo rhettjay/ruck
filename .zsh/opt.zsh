@@ -55,57 +55,57 @@ zstyle ':vcs_info:git:*' patch-formats "%{$fg[cyan]%}%b %{$reset_color%}%m%u%c%{
 
 # https://unix.stackexchange.com/questions/287330/accessing-random-array-element-in-zsh
 # Randel picks a random element from the given list
-function randEL {
- declare -a array=("$@")
- r=$(($RANDOM % ${#array[@]}))
- printf "%s\n" "${array[$r]}"
- #return "${array[$r]}"
-}
-
-
-function setPromptID {
-  TERM_ID="$(randEL 🚀 👻 👾 🦄 🐳 🐻 🦊 🐙 🦖 ⚡️)"
-}
-
-# function cd () {
-#   builtin cd "$@" && [[ -f .zsh_config ]] && . .aliases
-#   return 0
+# function randEL {
+#  declare -a array=("$@")
+#  r=$(($RANDOM % ${#array[@]}))
+#  printf "%s\n" "${array[$r]}"
+#  #return "${array[$r]}"
 # }
-
-dev_client="NOT SET"
-
-setPromptID
-
-precmd() {
-    vcs_info
-     if [[ -z $vcs_info_msg_0_ ]]; then
-       PROMPT="%3~ ${TERM_ID%2G%} "
-     elif [[ ! -z $vcs_info_msg_0_ ]]; then
-      if [[ $dev_client == "NOT SET" || -z $dev_gro ]]; then
-        PROMPT="$vcs_info_msg_0_ %{$TERM_ID%2G%} "
-      else
-        PROMPT="$vcs_info_msg_0_ %{$TERM_ID%2G%} "
-      fi
-     fi
-}
-
-function calculateGitProjectHead {
-
-}
-
-function chpwd {
-  if [[ $(git $PWD rev-parse --is-inside-work-tree 2>/dev/null; echo $?) -ge 1 ]]; then
-      export dev_client="NOT SET"
-      export prd_client="NOT SET"
-    else
-      DIR="$(git rev-parse --show-toplevel --sq --quiet $PWD)"
-      if [[ $DIR != "" ]]; then
-        source "$DIR/.zsh_config"
-      else
-        return 1
-      fi
-  fi
-}
+#
+#
+# function setPromptID {
+#   TERM_ID="$(randEL 🚀 👻 👾 🦄 🐳 🐻 🦊 🐙 🦖 ⚡️)"
+# }
+#
+# # function cd () {
+# #   builtin cd "$@" && [[ -f .zsh_config ]] && . .aliases
+# #   return 0
+# # }
+#
+# dev_client="NOT SET"
+#
+# setPromptID
+#
+# precmd() {
+#     vcs_info
+#      if [[ -z $vcs_info_msg_0_ ]]; then
+#        PROMPT="%3~ ${TERM_ID%2G%} "
+#      elif [[ ! -z $vcs_info_msg_0_ ]]; then
+#       if [[ $dev_client == "NOT SET" || -z $dev_gro ]]; then
+#         PROMPT="$vcs_info_msg_0_ %{$TERM_ID%2G%} "
+#       else
+#         PROMPT="$vcs_info_msg_0_ %{$TERM_ID%2G%} "
+#       fi
+#      fi
+# }
+#
+# function calculateGitProjectHead {
+#
+# }
+#
+# function chpwd {
+#   if [[ $(git $PWD rev-parse --is-inside-work-tree 2>/dev/null; echo $?) -ge 1 ]]; then
+#       export dev_client="NOT SET"
+#       export prd_client="NOT SET"
+#     else
+#       DIR="$(git rev-parse --show-toplevel --sq --quiet $PWD)"
+#       if [[ $DIR != "" ]]; then
+#         source "$DIR/.zsh_config"
+#       else
+#         return 1
+#       fi
+#   fi
+# }
 
 
 #+----------------+

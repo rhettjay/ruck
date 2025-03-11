@@ -1,10 +1,11 @@
 ## git aliases
 function gcommit { git commit -m "$@"; }
 ## add explicity alias so I can search it with alias
-function gclean () { git branch -d $(git branch --merged=master | grep -v master); git fetch prune; }
+function gdefault { git remote show origin | sed -n '/HEAD branch/s/.*: //p' }
+function gclean { git branch -d $(git branch --merged=master | grep -v master); git fetch prune; }
 alias gc="gcommit";
 alias gcsm="git commit -S -m"
-function gcsma() {
+function gcsma {
     git add $1 && git commit -S -m $2
 }
 alias gs="git status";
@@ -14,7 +15,7 @@ alias gitf="git fetch";
 alias updates="git diff -- . ':(exclude)*-lock.json'";
 alias changes="git diff --stat -- .";
 alias switch="git switch";
-alias gitsch="git switch -c"
+alias gitch="git switch -c"
 alias jlone="jj git clone https://github.com/$1";
 # Keeping glone around in case I have a hard time adapting to the new pattern.
 # This way if I ever migrate all the way to jj then clone will not need a mental remap.
@@ -181,3 +182,8 @@ alias jwth="decode_jwt 1"
 # Decode JWT Payload
 alias jwtp="decode_jwt 2"
 alias k="kubectl"
+
+# Validate yaml
+validateYaml() {
+    python3 -c 'import yaml,sys;yaml.safe_load(sys.stdin)' < $1
+}
