@@ -1,4 +1,17 @@
 return {
+  {
+    "ellisonleao/gruvbox.nvim",
+    lazy = false,
+    priority = 1000,
+    -- enabled = false,
+    config = function()
+      vim.cmd.colorscheme("gruvbox")
+      require("gruvbox").setup({
+        terminal_colors = true,
+        dim_inactive = true,
+      })
+    end,
+  },
   -- I also like habamax (set in)
   {
     "ntk148v/habamax.nvim",
@@ -10,18 +23,6 @@ return {
   },
   {
     "erikbackman/brightburn.vim",
-  },
-  {
-    "ellisonleao/gruvbox.nvim",
-    lazy = false,
-    priority = 1000,
-    -- enabled = false,
-    config = function()
-      require("gruvbox").setup({
-        terminal_colors = true,
-        dim_inactive = true,
-      })
-    end,
   },
   {
     "catppuccin/nvim",
