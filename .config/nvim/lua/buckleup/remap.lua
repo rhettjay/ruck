@@ -60,6 +60,10 @@ keymap.set("n", "<leader>Y", [["+Y]])
 
 keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
+-- go back from definition
+keymap.set("n", "gb", "<C-O>")
+keymap.set("n", "gn", "<C-o>")
+
 -- Source
 keymap.set("n", "<leader><leader>", "<cmd>so<CR>")
 
