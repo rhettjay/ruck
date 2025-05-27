@@ -14,32 +14,22 @@ keymap.set("n", "+", "<C-a>")
 keymap.set("n", "-", "<C-x>")
 
 -- Delete a word backwards
-keymap.set("n", "dw", '"vb"_d')
+keymap.set("n", "dw", '"b"_d')
 
 -- Reverse selection
 keymap.set({"n", "v"}, "<leader>lr", function(opts) return string.reverse(opts.args) end)
 
 -- Select all
-keymap.set("n", "<C-a>", "gg<S-v>G")
+-- keymap.set("n", "<C-a>", "gg<S-v>G")
 
 -- Jumplist
-keymap.set("n", "<C-m>", "<C-i>", opts)
-
--- Split Window
-keymap.set("n", "sss", ":split<Return>", opts)
-keymap.set("n", "ssv", ":vsplit<Return>", opts)
+-- keymap.set("n", "<C-m>", "<C-i>", opts)
 
 -- Not sure
-keymap.set("n", "sh", "<C-w>h")
-keymap.set("n", "sk", "<C-w>k")
-keymap.set("n", "sj", "<C-w>j")
-keymap.set("n", "sl", "<C-w>l")
-
--- Resize Windows
-keymap.set("n", "<C-w><left>", "<C-w><")
-keymap.set("n", "<C-w><right>", "<C-w>>")
-keymap.set("n", "<C-w><up>", "<C-w>+")
-keymap.set("n", "<C-w><down>", "<C-w>-")
+-- keymap.set("n", "sh", "<C-w>h")
+-- keymap.set("n", "sk", "<C-w>k")
+-- keymap.set("n", "sj", "<C-w>j")
+-- keymap.set("n", "sl", "<C-w>l")
 
 -- Diagnostics -- set in ../plugins/lspconfig.lua
 --keymap.set("n", "<C-j>", function()

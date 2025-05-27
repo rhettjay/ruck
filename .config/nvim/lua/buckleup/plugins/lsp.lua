@@ -30,6 +30,7 @@ return {
         cmp_nvim_lsp.default_capabilities()
       )
 
+      vim.filetype.add({ extension = { templ = "templ" } })
       require("fidget").setup({})
       require("mason").setup({})
       require("mason-lspconfig").setup({
@@ -40,6 +41,7 @@ return {
           "gopls",
           "lua_ls",
           "rust_analyzer",
+          "cmake",
           -- "terraformls",
           -- "tsserver",
           -- "zls",
@@ -49,6 +51,25 @@ return {
             require("lspconfig")[server_name].setup {
               capabilities = capabilities
             }
+          end,
+          html = function()
+            local lspconfig = require("lspconfig")
+            lspconfig.html.setup({
+              on_attach = on_attach,
+              capabilities = capabilities,
+              filetypes = { "html", "templ"}
+            })
+            lspconfig.tailwindcss.setup({
+              on_attach = on_attach,
+              capabilities = capabilities,
+              filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+              init_options = { userLanguages = { templ = "html" } },
+            })
+            lspconfig.htmx.setup({
+              on_attach = on_attach,
+              capabilities = capabilities,
+              filetypes = { "html", "templ" },
+            })
           end,
           zls = function()
             local lspconfig = require("lspconfig")
