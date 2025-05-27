@@ -121,6 +121,7 @@ alias ruck="rm -irf ~/.config/ cp ~/rucksack/.config ~/.config"
 # Docker / Podman
 alias pod="podman"
 alias docker-start="open -a docker && while ! docker info > /dev/null 2>&1; do sleep 1; done"
+alias k="kubectl"
 
 # All the important functions (print them to term and copy them)
 d() {
@@ -181,7 +182,6 @@ alias jwth="decode_jwt 1"
 
 # Decode JWT Payload
 alias jwtp="decode_jwt 2"
-alias k="kubectl"
 
 # Validate yaml
 validateYaml() {

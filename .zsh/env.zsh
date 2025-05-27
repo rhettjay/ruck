@@ -1,6 +1,7 @@
 # XDG (Cross Desktop Group) Environment
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
+export PATH="$HOME/bin:$PATH"
 
 # +-------------------------------------------------------------------------+
 # | zle options https://zsh.sourceforge.io/Doc/Release/Options.html#Options |
@@ -53,15 +54,28 @@ _comp_options+=(globdots)
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#69cfd2,bold,underline"
 # Fast stntax highlightjng
 source ~/buckleup/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
 # kubectl autocomplete
 source <(kubectl completion zsh)
 
+# minikube autocomplete
+source <(minikube completion zsh)
+
+# openshift autocomplete
+source <(oc completion zsh)
+
+# yq autocomplete
+source <(yq shell-completion zsh)
+
 #+--------------+
 #| Path options |
 #+--------------+
+
+# Kubectl
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Python 3.11
 # The original version is saved in .zprofile.pysave
