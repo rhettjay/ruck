@@ -86,6 +86,23 @@ return {
             vim.g.zig_fmt_autosave = 0
 
           end,
+          yamlls = function()
+            local lspconfig = require('lspconfig')
+            lspconfig.yamlls.setup({
+              capabilities = capabilities,
+              settings = {
+                yaml = {
+                  schemas = {
+                    kubernetes = "*.yaml",
+                    ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+                    ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+                    ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+                    ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+                  },
+                },
+              },
+            })
+          end,
           ["tsserver"] = function()
             local lspconfig = require("lspconfig")
             lspconfig.tsserver.setup({
