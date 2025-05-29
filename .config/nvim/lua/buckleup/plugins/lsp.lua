@@ -105,6 +105,7 @@ return {
                     enable = true,
                     url = "",
                   },
+                  -- Helps with k8s yaml files and other yaml files
                   schemas = require('schemastore').yaml.schemas(),
                   -- {
                     -- kubernetes = "*.yaml",
