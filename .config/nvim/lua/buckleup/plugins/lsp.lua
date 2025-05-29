@@ -3,6 +3,7 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
+      "b0o/schemastore.nvim",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -52,6 +53,13 @@ return {
               capabilities = capabilities
             }
           end,
+          -- ansible = function()
+          --   local lspconfig = require("lspconfig")
+          --     lspconfig.ansible.setup({
+          --       capabilities = capabilities,
+          --       filetypes = { "playbook.yml", "playbook.yaml", "**/tasks/*.yaml", "**/handlers/*.yaml", "**/tasks/*.yml", "**/handlrs/*.yml"        },
+          --   })
+          -- end,
           html = function()
             local lspconfig = require("lspconfig")
             lspconfig.html.setup({
@@ -91,14 +99,28 @@ return {
             lspconfig.yamlls.setup({
               capabilities = capabilities,
               settings = {
+                redhat = { telemetry = { enabled = false } },
                 yaml = {
-                  schemas = {
-                    kubernetes = "*.yaml",
-                    ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
-                    ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-                    ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
-                    ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+                  schemaStore = {
+                    enable = true,
+                    url = "",
                   },
+                  schemas = require('schemastore').yaml.schemas(),
+                  -- {
+                    -- kubernetes = "*.yaml",
+                    -- ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*.yaml",
+                    -- ["https://raw.githubusercontent.com/argoproj/argo-events/master/api/jsonschema/schema.json"] = "*.yaml",
+                    -- ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+                    -- ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+                    -- ["http://json.schemastore.org/github-discussion"] = ".github/action.{yml,yaml}",
+                    -- ["http://json.schemastore.org/dependabot-2.0"] = "./.github/**/dependabot.{yml,yaml}",
+                    -- ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+                    -- ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+                    -- ["http://json.schemastore.org/prometheus"] = "prometheus.yaml",
+                    -- ["http://json.schemastore.org/prometheus.rules"] = "prometheus-rules.yaml",
+                    -- ["https://starship.rs/config-schema.json"] = "starship.toml",
+                    -- ["http://json.schemastore.org/"] = "Chart.yaml",
+                  -- },
                 },
               },
             })
@@ -133,7 +155,6 @@ return {
               }
             })
           end,
-
         },
       })
 
