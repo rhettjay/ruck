@@ -1,5 +1,6 @@
 theme = GruvboxDark
 font-family = Hack Nerd Font Mono
+cursor-style = block
 
 keybind = super+i=new_split:right
 keybind = super+d=new_split:down
