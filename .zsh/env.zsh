@@ -27,10 +27,9 @@ setopt auto_list
 # Check arch then set homebrew prefix accordingly
 case "$(uname -m)" in
     x*)
-        if ($TERM == xterm-256color) {
+        if [$TERM == xterm-256color]; then
           HOMEBREW_PREFIX=/opt/homebrew
-	  break;
-        }
+	        break;
         HOMEBREW_PREFIX=/usr/local
         ;;
     arm*)
@@ -44,7 +43,9 @@ eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 # eval "$(starship init zsh)"
 
 # Tried oh-my-posh (it was pretty slow)
-eval "$(oh-my-posh init zsh --config ~/.zsh/oh-my-posh.omp.json)"
+if [ $TERM_PROGRAM != "Apple Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config ~/.zsh/oh-my-posh.omp.json)"
+fi
 
 # Autosuggestions in terminal
 source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
