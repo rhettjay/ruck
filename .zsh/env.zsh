@@ -27,10 +27,11 @@ setopt auto_list
 # Check arch then set homebrew prefix accordingly
 case "$(uname -m)" in
     x*)
-        if [$TERM == xterm-256color]; then
+        if [[ $TERM = xterm-256color ]]; then
           HOMEBREW_PREFIX=/opt/homebrew
-	        break;
-        HOMEBREW_PREFIX=/usr/local
+	else
+          HOMEBREW_PREFIX=/usr/local
+	fi
         ;;
     arm*)
         HOMEBREW_PREFIX=/opt/homebrew
