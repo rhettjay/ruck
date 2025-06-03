@@ -1,8 +1,7 @@
-vim.loader.enable()
-require("buckleup.opt")
+--vim.loader.enable()
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
-if not vim.uv.fs_stat(lazypath) then
+if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
     "git",
     "clone",
@@ -13,9 +12,6 @@ if not vim.uv.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
-
-require("buckleup.remap")
-require("buckleup.cmd")
 
 require("lazy").setup({
   spec = "buckleup.plugins",

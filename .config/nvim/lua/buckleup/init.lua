@@ -1,15 +1,47 @@
+require("buckleup.opt")
+require("buckleup.remap")
 require("buckleup.lazy")
 
 local augroup = vim.api.nvim_create_augroup
-local BuckleUpGroup = augroup('BuckleUp', {})
+local BuckleUpGroup = augroup("BuckleUp", {})
 
 local autocmd = vim.api.nvim_create_autocmd
+
+-- Highlight on yank
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", {})
+
+autocmd("TextYankPost", {
+	group = highlight_group,
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({
+		higroup = "IncSearch",
+		timeout = 40,
+	})
+	end,
+})
+
 
 autocmd({"BufWritePre"}, {
     group = BuckleUpGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
+
+
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
+-- -- Fix conceallment level for json files
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = { "json", "jsonc" },
+-- 	callback = function()
+-- 		vim.wo.spell = false
+-- 		vim.wo.concealleavel = 0
+-- 	end,
+-- })
+--
 
 autocmd('LspAttach', {
     group = BuckleUpGroup,
@@ -27,3 +59,5 @@ autocmd('LspAttach', {
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
     end
 })
+
+
