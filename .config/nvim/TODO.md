@@ -7,8 +7,8 @@ The impetus is that I get busy writing code and forget to sharpen my axe every n
   this should not be the case. I know there's some intelligent scanning going on and I need to fix it or write my own plugin to fix autopairing.
 # [Optimize]
 # [Deprecate]
-- [ ] fix tab to make sense on any machine
-- [ ] fix remap of ,q for floating diagnostic
+- [x] fix tab to make sense on any machine
+- [x] fix remap of ,q for floating diagnostic
 the following need fixing:
 auto formatting in typescript on the m1 Mac this seems to be when I write but no latency is caused
 I need the ability to look up a class definition without leaving the current buffer such as on hover over
