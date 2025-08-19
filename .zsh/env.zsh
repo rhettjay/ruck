@@ -38,6 +38,8 @@ case "$(uname -m)" in
         ;;
 esac
 
+export PATH="$HOMEBREW_PREFIX/bin:$PATH"
+
 eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 
 # # Try starship
@@ -54,7 +56,8 @@ source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 # autocomplete hidden files
 _comp_options+=(globdots)
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#69cfd2,bold,underline"
-# Fast stntax highlightjng
+
+# Fast syntax highlightjng
 source ~/buckleup/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 # Set up fzf key bindings and fuzzy completion
@@ -105,22 +108,22 @@ export MANPAGER="sh -c 'col -bx | bat -l man'"
 export GPG_TTY=\$(tty)
 
 # Wezterm
-export WEZTERM_CONFIG_FILE='~/.config/wezterm/wezterm.lua'
+# export WEZTERM_CONFIG_FILE='~/.config/wezterm/wezterm.lua'
 
 # Rust
 # Add .bin .cargo/bin /bin and wabt/build to bin
-export PATH="$PATH:$HOME/.bin:$HOME/.cargo/bin:$HOME/bin:$HOME/sandbox/web-assembly-crt/wabt/build:$HOME/.cargo/env"
+# export PATH="$PATH:$HOME/.bin:$HOME/.cargo/bin:$HOME/bin:$HOME/sandbox/web-assembly-crt/wabt/build:$HOME/.cargo/env"
 
 # WASM HOME
-export WASMTIME_HOME="$XDG_CONFIG_HOME/.wasmtime"
-export PATH="$WASMTIME_HOME/bin:$PATH"
+# export WASMTIME_HOME="$XDG_CONFIG_HOME/.wasmtime"
+# export PATH="$WASMTIME_HOME/bin:$PATH"
 
 # VOLTA Setup
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+# export VOLTA_HOME="$HOME/.volta"
+# export PATH="$VOLTA_HOME/bin:$PATH"
 
 # Wezterm
-export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+# export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 
 # NVM Setup (migrated to volta)
 export NVM_DIR="$HOME/.nvm"

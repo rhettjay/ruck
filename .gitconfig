@@ -1,7 +1,7 @@
 [user]
-	email = jay.bulk@proton.me
+	email = jay.bulk@tuta.io
 	name = Rhett Bulkley
-	signingkey = A9CAC1D14680E0D4
+	signingkey = C14C842007A46480
 [commit]
 	gpgsign = true
 [init]

@@ -63,18 +63,6 @@ function groot {
   fi
 }
 
-function branch-trim {
-  if git branch -v;
-  then
-    git branch --merged | egrep -v "(^\*|prd|dev)" | xargs git branch -d; return 0
-  else
-    return 1
-  fi
-}
-
-#** rt is git alias to git rev-parse --show-top-level **
-function root { cd $( git rt ) }
-
 # npm aliases
 alias initn="npm init";
 alias nr="npm run";
