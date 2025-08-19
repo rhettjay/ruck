@@ -108,8 +108,8 @@ return {
                   -- Helps with k8s yaml files and other yaml files
                   schemas = require('schemastore').yaml.schemas(),
                   -- {
-                    -- kubernetes = "*.yaml",
-                    -- ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*.yaml",
+                  --   kubernetes = "*.yaml",
+                  --   ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*.yaml",
                     -- ["https://raw.githubusercontent.com/argoproj/argo-events/master/api/jsonschema/schema.json"] = "*.yaml",
                     -- ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
                     -- ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
