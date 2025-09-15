@@ -107,7 +107,8 @@ alias sack="rm -irf ~/rucksack cp ~/.zshrc rucksack/"
 alias ruck="rm -irf ~/.config/ cp ~/rucksack/.config ~/.config"
 
 # Docker / Podman
-alias pod="podman"
+alias docker="podman"
+alias podman-start="open -a podman\ desktop"
 alias docker-start="open -a docker && while ! docker info > /dev/null 2>&1; do sleep 1; done"
 alias k="kubectl"
 
