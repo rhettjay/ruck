@@ -5,6 +5,13 @@
       "alignment": "left",
       "segments": [
         {
+          "transient_prompt": {
+            "background": "transparent",
+            "foreground": "#ffffff",
+            "template": "{{ .Shell }}> "
+          }
+        },
+        {
           "type": "kubectl",
           "style": "plain",
           "foreground": "#ebcc34",
