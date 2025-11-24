@@ -1,0 +1,87 @@
+format = """
+$directory\
+$line_break\
+$golang\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$character"""
+
+continuation_prompt = '>>'
+
+[directory]
+truncation_length = 3
+read_only = " 󰌾"
+truncation_symbol = "..."
+use_os_path_sep = true
+style = "italic blue"
+format = '[$path]($style)[$read_only]($read_only_style)'
+repo_root_style = 'cyan'
+repo_root_format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) '
+
+[localip]
+ssh_only = true
+format = " ◯[$localipv4](bold magenta)"
+disabled = false
+
+
+[character]
+success_symbol = " [❯](pruple)"
+error_symbol = " [❯](red)"
+vimcmd_symbol = " [❮](green)"
+
+[git_branch]
+format = "[$branch]($style)"
+style = "bright-black"
+symbol = " "
+
+[git_commit]
+tag_symbol = '  '
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)](218) "
+style = "cyan"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[direnv]
+detect_files = ['.curlrc', '.curlrc-prd']
+loaded_msg = 'c)~'
+unloaded_msg = ''
+detect_env_vars = ['ACCESS_TOKEN']
+
+[golang]
+format = "[$symbol($version)]($style)"
+symbol = " "
+
+[lua]
+symbol = " "
+
+[rust]
+symbol = "󱘗 "
+
+[zig]
+symbol = " "
+
+[kubernetes]
+format = '$context'
+disabled = false
+detect_files = ['k8s']
+
+[[kubernetes.contexts]]
+context_pattern = ".*ocp.*|.*osv.*"
+style = "yellow"
