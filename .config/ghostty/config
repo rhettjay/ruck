@@ -1,6 +1,10 @@
 theme = Gruvbox Dark
 font-family = Hack Nerd Font Mono
 cursor-style = block
+# macos-icon = xray
+macos-icon = glass
+clipboard-trim-trailing-spaces
+maximize
 
 keybind = super+i=new_split:right
 keybind = super+d=new_split:down
@@ -15,10 +19,5 @@ keybind = super+alt+i=inspector:toggle
 split-divider-color = #EE3B3B
 unfocused-split-opacity = 0.30
 
-
-# wait-after-command = true
-# macos-icon = custom-style
-# macos-icon-frame = aluminum
-# macos-icon-screen-color = #DEB887
-# macos-icon-ghost-color = #FFD787
 macos-titlebar-style = native
+shell-integration-features = sudo,ssh-terminfo,ssh-env
