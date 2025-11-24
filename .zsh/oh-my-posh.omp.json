@@ -5,6 +5,20 @@
       "alignment": "left",
       "segments": [
         {
+          "type": "kubectl",
+          "style": "plain",
+          "foreground": "#ebcc34",
+          "template": "{{.Context}} ",
+          "properties": {
+            "parse_kubeconfig": true,
+            "context_aliases": {
+              "default/api-ocp-dev-byu-edu:6443/rbulkley@byu.edu": "ocp-dev",
+              "default/api-ocp-byu-edu:6443/rbulkley@byu.edu": "ocp-prd",
+              "default/api-osv-prd-byu-edu:6443/rbulkley@byu.edu": "osv-prd"
+            }
+          }
+        },
+        {
           "foreground": "#98C379",
           "style": "plain",
           "template": "\u279c",
