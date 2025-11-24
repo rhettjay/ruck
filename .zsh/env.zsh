@@ -40,6 +40,9 @@ esac
 
 export PATH="$HOMEBREW_PREFIX/bin:$PATH"
 
+export JAVA_HOME="$(/usr/libexec/java_home -v 21)"
+export PATH="$JAVA_HOME/bin:$PATH"
+
 eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 
 # # Try starship
@@ -105,7 +108,7 @@ export VISUAL="nvim"
 export MANPAGER="sh -c 'col -bx | bat -l man'"
 
 # GPG Key
-export GPG_TTY=\$(tty)
+export GPG_TTY=$(tty)
 
 # Wezterm
 # export WEZTERM_CONFIG_FILE='~/.config/wezterm/wezterm.lua'
@@ -143,3 +146,5 @@ export JQ_COLORS="0;90:0;39:0;39:0;39:0;32:1;39:1;39:1;36"
 # Mob timer config
 export MOB_TIMER_ROOM=OddIntrovertedTechnologists-84602
 
+RIPGREP_CONFIG_PATH=~/.config/.ripgreprc
+export PATH=$HOME/.istioctl/bin:$PATH

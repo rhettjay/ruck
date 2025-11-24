@@ -8,7 +8,7 @@ alias gcsm="git commit -S -m"
 function gcsma {
     git add $1 && git commit -S -m $2
 }
-alias gs="git status";
+alias gs="git status -sb";
 alias gitup="git push -u origin ${vcs_info_msg_0_}";
 alias gitul="git pull"
 alias gitf="git fetch";
@@ -22,7 +22,7 @@ alias jlone="jj git clone https://github.com/$1";
 alias clone="gh repo clone";
 alias glone="gh repo clone";
 alias diff='delta'
-alias graph="git log --graph --pretty='%C(bold blue) Hash: %h %C(cyan)(%ar) %C(red) %s'";
+alias graph="git log --graph --pretty='%C(bold blue) Hash: %h %C(cyan)(%ar) %C(red) %s' -sb";
 alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 alias sed="gsed";
@@ -111,6 +111,7 @@ alias docker="podman"
 alias podman-start="open -a podman\ desktop"
 alias docker-start="open -a docker && while ! docker info > /dev/null 2>&1; do sleep 1; done"
 alias k="kubectl"
+alias kctx='f() { kubectl config use-context "$1"; }; f'
 
 # All the important functions (print them to term and copy them)
 d() {
