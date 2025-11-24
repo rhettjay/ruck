@@ -31,6 +31,7 @@
 [color]
 	ui = true
 [alias]
+  lg = log --color --graph --pretty=format:'%Cred%h %Cgreen%cr %Cblue%an%C(yellow) %D%Creset %s' --abbrev-commit --all
   farse = force --force-with-lease
   co = checkout
   branch = switch
