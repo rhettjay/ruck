@@ -43,14 +43,17 @@ export PATH="$HOMEBREW_PREFIX/bin:$PATH"
 export JAVA_HOME="$(/usr/libexec/java_home -v 21)"
 export PATH="$JAVA_HOME/bin:$PATH"
 
-eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+if [[ -x "$HOMEBREW_PREFIX/bin/brew" && -z "$HOMEBREW_SHELLENV_DONE" ]]; then
+  export HOMEBREW_SHELLENV_DONE=1
+  eval "$("$HOMEBREW_PREFIX/bin/brew" shellenv)"
+fi
 
 # # Try starship
 # eval "$(starship init zsh)"
 
 # Tried oh-my-posh (it was pretty slow)
-if [ $TERM_PROGRAM != "Apple Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config ~/.zsh/oh-my-posh.omp.json)"
+if [[ $TERM_PROGRAM != "Apple Terminal" ]]; then
+  eval "$(oh-my-posh init zsh --config '~/.zsh/oh-my-posh.omp.json')"
 fi
 
 # Autosuggestions in terminal
@@ -68,9 +71,6 @@ source <(fzf --zsh)
 
 # kubectl autocomplete
 source <(kubectl completion zsh)
-
-# minikube autocomplete
-source <(minikube completion zsh)
 
 # openshift autocomplete
 source <(oc completion zsh)
@@ -115,23 +115,38 @@ export GPG_TTY=$(tty)
 
 # Rust
 # Add .bin .cargo/bin /bin and wabt/build to bin
-# export PATH="$PATH:$HOME/.bin:$HOME/.cargo/bin:$HOME/bin:$HOME/sandbox/web-assembly-crt/wabt/build:$HOME/.cargo/env"
+export PATH="$PATH:$HOME/.bin:$HOME/.cargo/bin:$HOME/bin:$HOME/sandbox/web-assembly-crt/wabt/build:$HOME/.cargo/env"
 
 # WASM HOME
 # export WASMTIME_HOME="$XDG_CONFIG_HOME/.wasmtime"
 # export PATH="$WASMTIME_HOME/bin:$PATH"
 
-# VOLTA Setup
-# export VOLTA_HOME="$HOME/.volta"
-# export PATH="$VOLTA_HOME/bin:$PATH"
-
 # Wezterm
 # export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 
-# NVM Setup (migrated to volta)
+# NVM Setup
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion most important functions
+# only load nvm the first time I run node/npm/npx/nvm
+_lazy_load_nvm() {
+  unset -f node npm npx nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion most important functions
+}
+
+node() { _lazy_load_nvm; node "$@"; }
+npm()  { _lazy_load_nvm; npm  "$@"; }
+npx()  { _lazy_load_nvm; npx  "$@"; }
+nvm()  { _lazy_load_nvm; nvm  "$@"; }
+
+autoload -Uz add-zsh-hook
+
+_nvm_chpwd() {
+  # only if nvm is already loaded
+  typeset -f nvm >/dev/null || return
+  [[ -f .nvmrc ]] && nvm use --silent >/dev/null
+}
+
+add-zsh-hook chpwd _nvm_chpwd
 
 # TFSWITCH (terraform version manager)
 export TF_PRODUCT=opentofu
