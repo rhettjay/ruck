@@ -1,8 +1,24 @@
 theme = Gruvbox Dark
 font-family = Hack Nerd Font Mono
 cursor-style = block
+# Default
+# macos-icon = official
+# Xray - Black PCB
 # macos-icon = xray
-macos-icon = glass
+# Glass
+# macos-icon = glass
+# Arcade
+macos-icon = retro
+# Blueprint Plans
+# macos-icon = blueprint
+# Chalkboard
+# macos-icon = chalkboard
+# Green PCB
+# macos-icon = microchip
+# Shiny (purple and pink)
+# macos-icon = holographic
+# White + Blue Ghost
+# macos-icon = paper
 clipboard-trim-trailing-spaces
 maximize
 
