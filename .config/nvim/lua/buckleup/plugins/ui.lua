@@ -4,7 +4,7 @@ return {
   opts = {},
   },
 	{
-		"echasnovski/mini.animate",
+		"nvim-mini/mini.animate",
 		event = "VeryLazy",
     opts = {},
 	},
