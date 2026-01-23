@@ -1,5 +1,7 @@
 theme = Gruvbox Dark
+# background-opacity=0.9
 font-family = Hack Nerd Font Mono
+font-size = 20
 cursor-style = block
 # Default
 # macos-icon = official
