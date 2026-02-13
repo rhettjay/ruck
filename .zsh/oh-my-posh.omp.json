@@ -1,5 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "final_space": true,
+  "version": 3,
   "blocks": [
     {
       "alignment": "left",
@@ -12,6 +14,13 @@
           }
         },
         {
+          "secondary_prompt": {
+            "background": "transparent",
+            "foreground": "#ffffff",
+            "template": "{{ .Shell }} "
+          }
+        },
+        {
           "type": "kubectl",
           "style": "plain",
           "foreground": "#ebcc34",
@@ -21,7 +30,8 @@
             "context_aliases": {
               "default/api-ocp-dev-byu-edu:6443/rbulkley@byu.edu": "ocp-dev",
               "default/api-ocp-byu-edu:6443/rbulkley@byu.edu": "ocp-prd",
-              "default/api-osv-prd-byu-edu:6443/rbulkley@byu.edu": "osv-prd"
+              "default/api-osv-prd-byu-edu:6443/rbulkley@byu.edu": "osv-prd",
+              "default/api-osv-byuh-edu:6443/rbulkley@byuh.edu": "osv-byuh"
             }
           }
         },
@@ -59,7 +69,5 @@
       ],
       "type": "prompt"
     }
-  ],
-  "final_space": true,
-  "version": 3
+  ]
 }
