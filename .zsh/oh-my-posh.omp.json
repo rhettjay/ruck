@@ -24,7 +24,7 @@
           "type": "kubectl",
           "style": "plain",
           "foreground": "#ebcc34",
-          "template": "{{.Context}} ",
+          "template": "[{{ .Context }}] ",
           "properties": {
             "parse_kubeconfig": true,
             "context_aliases": {
@@ -36,20 +36,14 @@
           }
         },
         {
-          "foreground": "#98C379",
-          "style": "plain",
-          "template": "\u279c",
-          "type": "text"
-        },
-        {
-          "style": "plain",
-          "template": " {{.PWD}}",
           "type": "path",
-          "foreground": "#56B6C2",
-          "properties": {
-            "max_depth": 3,
-            "style": "folder"
-          }
+          "style": "plain",
+          "options": {
+            "style": "agnoster_short",
+            "max_depth": 2,
+            "folder_separator_icon": "/"
+          },
+          "template": "{{- if .Segments.Contains \"Git\" -}}{{- if .Segments.Git.Dir -}}{{- $sep := \"/\" -}}{{- $repo := (base .Segments.Git.Dir | trunc 8) -}}{{- $rel := replace \"\\\\\" \"/\" .Segments.Git.RelativeDir -}}{{- $rel = trimPrefix \"/\" $rel -}}{{- if or (eq $rel \"\") (eq $rel \".\") -}}{{ $repo }}{{- else -}}{{- $parts := splitList \"/\" $rel -}}{{- $leaf := (last $parts | trunc 8) -}}{{- if gt (len $parts) 1 -}}{{ $repo }}{{ $sep }}…{{ $sep }}{{ $leaf }}{{- else -}}{{ $repo }}{{ $sep }}{{ $leaf }}{{- end -}}{{- end -}}{{- else -}}{{ .Path }}{{- end -}}{{- else -}}{{ .Path }}{{- end -}}"
         },
         {
           "foreground": "#D0666F",
@@ -63,7 +57,7 @@
         {
           "foreground": "#BF616A",
           "style": "plain",
-          "template": " \u2717",
+          "template": "\u2717",
           "type": "status"
         }
       ],
