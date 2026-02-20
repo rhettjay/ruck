@@ -24,7 +24,7 @@
           "type": "kubectl",
           "style": "plain",
           "foreground": "#ebcc34",
-          "template": "[{{ .Context }}] ",
+          "template": "{{ .Context }} ",
           "properties": {
             "parse_kubeconfig": true,
             "context_aliases": {
@@ -46,19 +46,25 @@
           "template": "{{- if .Segments.Contains \"Git\" -}}{{- if .Segments.Git.Dir -}}{{- $sep := \"/\" -}}{{- $repo := (base .Segments.Git.Dir | trunc 8) -}}{{- $rel := replace \"\\\\\" \"/\" .Segments.Git.RelativeDir -}}{{- $rel = trimPrefix \"/\" $rel -}}{{- if or (eq $rel \"\") (eq $rel \".\") -}}{{ $repo }}{{- else -}}{{- $parts := splitList \"/\" $rel -}}{{- $leaf := (last $parts | trunc 8) -}}{{- if gt (len $parts) 1 -}}{{ $repo }}{{ $sep }}…{{ $sep }}{{ $leaf }}{{- else -}}{{ $repo }}{{ $sep }}{{ $leaf }}{{- end -}}{{- end -}}{{- else -}}{{ .Path }}{{- end -}}{{- else -}}{{ .Path }}{{- end -}}"
         },
         {
+          "type": "git",
+          "style": "plain",
           "foreground": "#D0666F",
           "properties": {
             "branch_icon": ""
           },
-          "style": "plain",
-          "template": "<#5FAAE8></> {{ .HEAD }}<#5FAAE8></>",
-          "type": "git"
+          "template": " {{ .HEAD }}"
         },
         {
-          "foreground": "#BF616A",
+          "type": "jujutsu",
           "style": "plain",
-          "template": "\u2717",
-          "type": "status"
+          "foreground": "#FB542B",
+          "template": "jj"
+        },
+        {
+          "type": "status",
+          "style": "plain",
+          "foreground": "#BF616A",
+          "template": "{{ .Code }}"
         }
       ],
       "type": "prompt"
