@@ -1,7 +1,7 @@
 # XDG (Cross Desktop Group) Environment
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # +-------------------------------------------------------------------------+
 # | zle options https://zsh.sourceforge.io/Doc/Release/Options.html#Options |
@@ -10,11 +10,12 @@ bindkey '^j' history-search-backward
 bindkey '^k' history-search-forward
 
 # History
-HISTSIZE=5000
+HISTSIZE=10000
 HISTFILE=~/.zsh_history
 HISTFILESIZE=10000
 SAVEHIST=$HISTSIZE
 HISTDUPE=erase
+HISTCONTROL=ignoreboth
 setopt extended_history
 setopt inc_append_history
 setopt append_history
@@ -23,6 +24,11 @@ setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt auto_list
+setopt auto_param_slash
+setopt no_case_glob no_case_match
+setopt globdots
+setopt extended_glob
+setopt interactive_comments
 
 # Check arch then set homebrew prefix accordingly
 case "$(uname -m)" in
@@ -77,6 +83,9 @@ source <(oc completion zsh)
 
 # yq autocomplete
 source <(yq shell-completion zsh)
+
+# codex autocomplete
+source <(codex completion zsh)
 
 #+--------------+
 #| Path options |
@@ -163,3 +172,5 @@ export MOB_TIMER_ROOM=OddIntrovertedTechnologists-84602
 
 RIPGREP_CONFIG_PATH=~/.config/.ripgreprc
 export PATH=$HOME/.istioctl/bin:$PATH
+
+# ghostty +boo

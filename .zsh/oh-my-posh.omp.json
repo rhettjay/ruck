@@ -24,7 +24,7 @@
           "type": "kubectl",
           "style": "plain",
           "foreground": "#ebcc34",
-          "template": "{{ .Context }} ",
+          "template": "{{ .Context }}",
           "properties": {
             "parse_kubeconfig": true,
             "context_aliases": {
@@ -38,12 +38,11 @@
         {
           "type": "path",
           "style": "plain",
+          "foreground": "#8AA499",
           "options": {
-            "style": "agnoster_short",
-            "max_depth": 2,
-            "folder_separator_icon": "/"
-          },
-          "template": "{{- if .Segments.Contains \"Git\" -}}{{- if .Segments.Git.Dir -}}{{- $sep := \"/\" -}}{{- $repo := (base .Segments.Git.Dir | trunc 8) -}}{{- $rel := replace \"\\\\\" \"/\" .Segments.Git.RelativeDir -}}{{- $rel = trimPrefix \"/\" $rel -}}{{- if or (eq $rel \"\") (eq $rel \".\") -}}{{ $repo }}{{- else -}}{{- $parts := splitList \"/\" $rel -}}{{- $leaf := (last $parts | trunc 8) -}}{{- if gt (len $parts) 1 -}}{{ $repo }}{{ $sep }}…{{ $sep }}{{ $leaf }}{{- else -}}{{ $repo }}{{ $sep }}{{ $leaf }}{{- end -}}{{- end -}}{{- else -}}{{ .Path }}{{- end -}}{{- else -}}{{ .Path }}{{- end -}}"
+            "style": "letter",
+            "max_depth": 1
+          }
         },
         {
           "type": "git",
@@ -52,7 +51,7 @@
           "properties": {
             "branch_icon": ""
           },
-          "template": " {{ .HEAD }}"
+          "template": "{{ .HEAD }}"
         },
         {
           "type": "jujutsu",
@@ -64,7 +63,7 @@
           "type": "status",
           "style": "plain",
           "foreground": "#BF616A",
-          "template": "{{ .Code }}"
+          "template": " {{ .Code }}"
         }
       ],
       "type": "prompt"

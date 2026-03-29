@@ -52,3 +52,6 @@ vim.keymap.set("n", "gn", "<C-o>")
 
 -- Source
 vim.keymap.set("n", "<leader><leader>", "<cmd>so<CR>")
+
+vim.keymap.set({"n", "v"}, ":secretsshow", ":CloakDisable")
+vim.keymap.set({"n", "v"}, ":secretshide", ":CloakEnable")

@@ -126,7 +126,7 @@ return {
               },
             })
           end,
-          ["tsserver"] = function()
+          tsserver = function()
             local lspconfig = require("lspconfig")
             lspconfig.tsserver.setup({
               capabilities = capabilities,
@@ -136,7 +136,7 @@ return {
 
             })
           end,
-          ["lua_ls"] = function()
+          lua_ls = function()
             local lspconfig = require("lspconfig")
             lspconfig.lua_ls.setup({
               capabilities = capabilities,
@@ -153,6 +153,14 @@ return {
                     },
                   },
                 }
+              }
+            })
+          end,
+          rust_analyzer = function()
+            local lspconfig = require("lspconfig")
+            lspconfig.rust_analyzer.setup({
+              settings = {
+                procMacro = { enable = true },
               }
             })
           end,
