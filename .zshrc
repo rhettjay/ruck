@@ -17,5 +17,6 @@ fi
 source "$ZDOTDIR/opt.zsh"
 source "$ZDOTDIR/env.zsh"
 source "$ZDOTDIR/aliases.zsh"
+source "$ZDOTDIR/work.zsh"
 
 # zprof

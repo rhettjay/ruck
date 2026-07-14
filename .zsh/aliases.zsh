@@ -154,6 +154,10 @@ function fshow() {
 FZF-EOF"
 }
 
+#GOOSE VS goose-cli (ai)
+alias goose="/opt/homebrew/bin/goose"
+alias gogoose="/Users/${whoami}/go/bin/goose"
+
 function decode_base64_url() {
   local len=$((${#1} % 4))
   local result="$1"
@@ -177,3 +181,6 @@ alias jwtp="decode_jwt 2"
 validateYaml() {
     python3 -c 'import yaml,sys;yaml.safe_load(sys.stdin)' < $1
 }
+
+alias excal-up='podman run --rm -dit --name excalidraw -p 8990:80 excalidraw/excalidraw:latest'
+

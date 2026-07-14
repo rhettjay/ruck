@@ -171,6 +171,7 @@ export JQ_COLORS="0;90:0;39:0;39:0;39:0;32:1;39:1;39:1;36"
 export MOB_TIMER_ROOM=OddIntrovertedTechnologists-84602
 
 RIPGREP_CONFIG_PATH=~/.config/.ripgreprc
-export PATH=$HOME/.istioctl/bin:$PATH
+
+export HUMIO_CONFIG_PATH="$HOME/.config/humio-threat/config.toml"
 
 # ghostty +boo
