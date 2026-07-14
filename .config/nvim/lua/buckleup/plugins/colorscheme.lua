@@ -1,9 +1,17 @@
 return {
   {
+    "rhettjay/ghostty-default-theme.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("ghostty-default")
+    end,
+  },
+  {
     "ellisonleao/gruvbox.nvim",
     lazy = false,
     priority = 1000,
-    -- enabled = false,
+    enabled = false,
     config = function()
       vim.cmd.colorscheme("gruvbox")
       require("gruvbox").setup({
@@ -22,13 +30,10 @@ return {
     end,
   },
   {
-    "erikbackman/brightburn.vim",
-  },
-  {
     "catppuccin/nvim",
     name = "catppuccin",
     -- priority = 1000,
-    enabled = false,
+    -- enabled = false,
     config = function()
       require("catppuccin").setup({
         flavour = "mocha",

@@ -1,8 +1,10 @@
-theme = Gruvbox Dark
-# background-opacity=0.9
+# theme = Gruvbox Dark
+# background-image = /Users/rbulkley/Desktop/screenshots/moon+venus.jpg
+# background-image-opacity = .20
+# background-image-fit = stretch
 font-family = Hack Nerd Font Mono
 font-size = 20
-cursor-style = block
+cursor-style = bar
 # Default
 # macos-icon = official
 # Xray - Black PCB
@@ -10,7 +12,7 @@ cursor-style = block
 # Glass
 # macos-icon = glass
 # Arcade
-macos-icon = retro
+# macos-icon = retro
 # Blueprint Plans
 # macos-icon = blueprint
 # Chalkboard
@@ -28,14 +30,64 @@ keybind = super+i=new_split:right
 keybind = super+d=new_split:down
 keybind = super+right_bracket=goto_split:next
 keybind = super+left_bracket=goto_split:previous
-keybind = super+shift+i>+=resize_split:right,10
-keybind = super+shift+i>-=resize_split:left,10
-keybind = super+shift+d>+=resize_split:up,10
-keybind = super+shift+d>-=resize_split:down,10
+keybind = super+alt+h=resize_split:right,10
+keybind = super+alt+l=resize_split:left,10
+keybind = super+alt+k=resize_split:up,10
+keybind = super+alt+j=resize_split:down,10
 keybind = super+shift+i>.=equalize_splits
 keybind = super+alt+i=inspector:toggle
+keybind = resize/arrow_up=resize_split:up,10
+keybind = resize/arrow_down=resize_split:down,10
+keybind = resize/arrow_left=resize_split:left,10
+keybind = resize/arrow_right=resize_split:right,10
+keybind = resize/escape=deactivate_key_table
+keybind = resize/catch_all=ignore
+keybind = ctrl+a=activate_key_table:resize
 split-divider-color = #EE3B3B
 unfocused-split-opacity = 0.30
 
 macos-titlebar-style = native
 shell-integration-features = sudo,ssh-terminfo,ssh-env
+
+# Vim-mode keybindings for Ghostty.
+# Entry point
+keybind = alt+v=activate_key_table:vim
+
+# Key table definition
+keybind = vim/
+
+# Line movement
+keybind = vim/j=scroll_page_lines:1
+keybind = vim/k=scroll_page_lines:-1
+
+# Page movement
+keybind = vim/ctrl+d=scroll_page_down
+keybind = vim/ctrl+u=scroll_page_up
+keybind = vim/ctrl+f=scroll_page_down
+keybind = vim/ctrl+b=scroll_page_up
+keybind = vim/shift+j=scroll_page_down
+keybind = vim/shift+k=scroll_page_up
+
+# Jump to top/bottom
+keybind = vim/g>g=scroll_to_top
+keybind = vim/shift+g=scroll_to_bottom
+
+# Search (if you want vim-style search entry)
+keybind = vim/slash=start_search
+keybind = vim/n=navigate_search:next
+
+# Copy mode / selection
+# Note we're missing a lot of actions here to make this more full featured.
+keybind = vim/v=copy_to_clipboard
+keybind = vim/y=copy_to_clipboard
+
+# Command Palette
+keybind = vim/shift+semicolon=toggle_command_palette
+
+# Exit
+keybind = vim/escape=deactivate_key_table
+keybind = vim/q=deactivate_key_table
+keybind = vim/i=deactivate_key_table
+
+# Catch unbound keys
+keybind = vim/catch_all=ignore

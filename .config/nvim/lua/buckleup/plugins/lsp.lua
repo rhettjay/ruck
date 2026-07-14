@@ -94,38 +94,38 @@ return {
             vim.g.zig_fmt_autosave = 0
 
           end,
-          yamlls = function()
-            local lspconfig = require('lspconfig')
-            lspconfig.yamlls.setup({
-              capabilities = capabilities,
-              settings = {
-                redhat = { telemetry = { enabled = false } },
-                yaml = {
-                  schemaStore = {
-                    enable = true,
-                    url = "",
-                  },
-                  -- Helps with k8s yaml files and other yaml files
-                  schemas = require('schemastore').yaml.schemas(),
-                  -- {
-                  --   kubernetes = "*.yaml",
-                  --   ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*.yaml",
-                    -- ["https://raw.githubusercontent.com/argoproj/argo-events/master/api/jsonschema/schema.json"] = "*.yaml",
-                    -- ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
-                    -- ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-                    -- ["http://json.schemastore.org/github-discussion"] = ".github/action.{yml,yaml}",
-                    -- ["http://json.schemastore.org/dependabot-2.0"] = "./.github/**/dependabot.{yml,yaml}",
-                    -- ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
-                    -- ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
-                    -- ["http://json.schemastore.org/prometheus"] = "prometheus.yaml",
-                    -- ["http://json.schemastore.org/prometheus.rules"] = "prometheus-rules.yaml",
-                    -- ["https://starship.rs/config-schema.json"] = "starship.toml",
-                    -- ["http://json.schemastore.org/"] = "Chart.yaml",
-                  -- },
-                },
-              },
-            })
-          end,
+          -- yamlls = function()
+          --   local lspconfig = require('lspconfig')
+          --   lspconfig.yamlls.setup({
+          --     capabilities = capabilities,
+          --     settings = {
+          --       redhat = { telemetry = { enabled = false } },
+          --       yaml = {
+          --         schemaStore = {
+          --           enable = true,
+          --           url = "",
+          --         },
+          --         -- Helps with k8s yaml files and other yaml files
+          --         schemas = require('schemastore').yaml.schemas(),
+          --         -- {
+          --         --   kubernetes = "*.yaml",
+          --         --   ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*.yaml",
+          --           -- ["https://raw.githubusercontent.com/argoproj/argo-events/master/api/jsonschema/schema.json"] = "*.yaml",
+          --           -- ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+          --           -- ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+          --           -- ["http://json.schemastore.org/github-discussion"] = ".github/action.{yml,yaml}",
+          --           -- ["http://json.schemastore.org/dependabot-2.0"] = "./.github/**/dependabot.{yml,yaml}",
+          --           -- ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+          --           -- ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+          --           -- ["http://json.schemastore.org/prometheus"] = "prometheus.yaml",
+          --           -- ["http://json.schemastore.org/prometheus.rules"] = "prometheus-rules.yaml",
+          --           -- ["https://starship.rs/config-schema.json"] = "starship.toml",
+          --           -- ["http://json.schemastore.org/"] = "Chart.yaml",
+          --         -- },
+          --       },
+          --     },
+          --   })
+          -- end,
           tsserver = function()
             local lspconfig = require("lspconfig")
             lspconfig.tsserver.setup({
